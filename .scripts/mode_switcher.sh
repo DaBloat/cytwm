@@ -53,6 +53,6 @@ if [[ $1 == 'l' ]] then
 
 elif [[ $1 == 'd' ]] then
 	swww img $WALL_PATH/wall-dark.png
-	add_to_default $DCOLOR_BORDER 2
+	add_to_default $DCOLOR_BORDER 0
 fi
 
