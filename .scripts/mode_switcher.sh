@@ -5,6 +5,9 @@ LCOLOR_BORDER=331e12
 DCOLOR_BORDER=d4baa4
 HYPR_CONF=$HOME/.config/hypr/config/aesthetics/looks.conf
 
+TYPE=$(swww query | awk -F '/' '{print $5}')
+
+
 # Hyprctl always defaults the color in the conf file every configuration in reload/reboot
 # Thus saving it to the looks.conf solve the problem
 add_to_default() {
@@ -47,11 +50,11 @@ add_to_default() {
 
 }
 
-if [[ $1 == 'l' ]] then
+if [[ $TYPE == 'wall-dark.png' ]] then
 	swww img $WALL_PATH/wall.png
 	add_to_default $LCOLOR_BORDER 4
 
-elif [[ $1 == 'd' ]] then
+elif [[ $TYPE == 'wall.png' ]] then
 	swww img $WALL_PATH/wall-dark.png
 	add_to_default $DCOLOR_BORDER 0
 fi
