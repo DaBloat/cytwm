@@ -58,12 +58,12 @@ change_kitty(){
 }
 
 if [[ $TYPE == 'wall-dark.png' ]] then
-	swww img $WALL_PATH/wall.png
+	swww img --transition-type wipe --transition-angle 30 --transition-step 120 --transition-fps 160 $WALL_PATH/wall.png
 	add_to_default $LCOLOR_BORDER 4
 	change_kitty light
 
 elif [[ $TYPE == 'wall.png' ]] then
-	swww img $WALL_PATH/wall-dark.png
+	swww img --transition-type wipe --transition-angle 30 --transition-step 120 --transition-fps 160 $WALL_PATH/wall-dark.png
 	add_to_default $DCOLOR_BORDER 0
 	change_kitty dark
 fi
