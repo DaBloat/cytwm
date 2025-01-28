@@ -1,9 +1,12 @@
-# This script is for switching to light or dark mode to Hyprland
+#!/bin/bash
+# This script is for switching to light or dark mode to Hyprland, Kitty
 
 WALL_PATH=$HOME/wallpaper
 LCOLOR_BORDER=331e12
 DCOLOR_BORDER=d4baa4
 HYPR_CONF=$HOME/.config/hypr/config/aesthetics/looks.conf
+CYNA_COLORS=$HOME/.config/cyna-colors/terminal
+KITTY_CCONF=$HOME/.config/kitty/theme.conf
 
 TYPE=$(swww query | awk -F '/' '{print $5}')
 
@@ -34,7 +37,7 @@ add_to_default() {
 	fi
 
 	# Shadow Color
-	if grep -q "color" "$HYPR_CONF"; then
+	if grep -q "lor" "$HYPR_CONF"; then
 		sed -i "s/^.*color.*/$SHADOW_COLOR/" "$HYPR_CONF"
 	else
 		awk '/shadow {/ { print; print "'"$SHADOW_COLOR"'"; next }1' "$HYPR_CONF" > "$HYPR_CONF.tmp" && mv "$HYPR_CONF.tmp" "$HYPR_CONF"
@@ -46,16 +49,21 @@ add_to_default() {
 	else
 		awk '/shadow {/ { print; print "'"$SHADOW_OFFSET"'"; next }1' "$HYPR_CONF" > "$HYPR_CONF.tmp" && mv "$HYPR_CONF.tmp" "$HYPR_CONF"
 	fi
+}
 
-
+change_kitty(){
+	local theme=$1
+	cat $CYNA_COLORS/${1}_colors.conf >> $KITTY_CCONF
+	$(kill -SIGUSR1 $(pidof kitty))
 }
 
 if [[ $TYPE == 'wall-dark.png' ]] then
 	swww img $WALL_PATH/wall.png
 	add_to_default $LCOLOR_BORDER 4
+	change_kitty light
 
 elif [[ $TYPE == 'wall.png' ]] then
 	swww img $WALL_PATH/wall-dark.png
 	add_to_default $DCOLOR_BORDER 0
+	change_kitty dark
 fi
-
