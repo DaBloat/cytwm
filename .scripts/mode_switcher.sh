@@ -37,7 +37,7 @@ add_to_default() {
 	fi
 
 	# Shadow Color
-	if grep -q "lor" "$HYPR_CONF"; then
+	if grep -q "color" "$HYPR_CONF"; then
 		sed -i "s/^.*color.*/$SHADOW_COLOR/" "$HYPR_CONF"
 	else
 		awk '/shadow {/ { print; print "'"$SHADOW_COLOR"'"; next }1' "$HYPR_CONF" > "$HYPR_CONF.tmp" && mv "$HYPR_CONF.tmp" "$HYPR_CONF"
