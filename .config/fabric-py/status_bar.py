@@ -15,11 +15,13 @@ class StatusBar(Window):
             layer = "top",
             exclusivity= "auto",
             anchor = "left top right",
-            margin = "10px 10px 5px 10px",
+            margin = '10px -5px 0px 5px'
         )
 
         self.children = CenterBox(
-            size=[50, 50]
+            name = 'center',
+            size=[65, 65],
+            center_children=[Label("Thank you Everyone!")],
         )
 
 if __name__ == '__main__':
