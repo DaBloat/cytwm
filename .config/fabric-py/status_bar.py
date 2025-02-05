@@ -21,11 +21,6 @@ class StatusBar(Window):
             visible = False
         )
 
-        self.seperators = Label(
-            '|',
-            name = 'seperators'
-        )
-
         self.clock = DateTime(
             name = 'clock'
         )
@@ -41,15 +36,35 @@ class StatusBar(Window):
             size = [55, 55],
             start_children = Box(
                 name = 'left-container',
-                children = [Label("1"), Label('2')]),
+                children = [Label('Start'),
+                            Label('|', name='seperators'),
+                            Label('Spotify'),
+                            Label('|', name='seperators'),
+                            Label('Applications'),]
+                    ),
 
             center_children = Box(
                 name = 'middle-container',
-                children = [Label('|', name='seperators'), self.system_tray, Label('|', name='seperators')]),
+                children = [Label('Active Clients'),
+                            Label('|', name='seperators'),
+                            Label('Workspaces'), Label('|',
+                            name='seperators'),
+                            Label('Notifications')]),
 
             end_children = Box(
                 name='right-container',
-                children = [self.clock]
+                children = [
+                    self.system_tray,
+                    Label('|', name='seperators'),
+                    self.clock,
+                    Label('|', name='seperators'),
+                    Label('Bluetooth'),
+                    Label('|', name='seperators'),
+                    Label('Wifi'),
+                    Label('|', name='seperators'),
+                    Label('Battery'),
+                    Label('|', name='seperators'),
+                    Label('Other Settings')]
             )
         ) 
 

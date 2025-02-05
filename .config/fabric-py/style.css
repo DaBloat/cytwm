@@ -1,31 +1,4 @@
-:vars {
-    --background: #d4baa4;
-    --foreground: #331e12;
-    --color0: #150d16;
-    --color1: #72448D;
-    --color2: #9C5995;
-    --color3: #D5719F;
-    --color4: #9A62F3;
-    --color5: #E075DF;
-    --color6: #F98F9F;
-    --color7: #f5dbc4;
-    --color8: #ab9989;
-    --color9: #72448D;
-    --color10: #9C5995;
-    --color11: #D5719F;
-    --color12: #9A62F3;
-    --color13: #E075DF;
-    --color14: #F98F9F;
-    --color15: #f5dbc4;
-    --window-bg: alpha(var(--background),1);
-    --module-bg: alpha(var(--background),1);
-    --border-color: var(--foreground);
-    --ws-active: var(--color9);
-    --ws-inactive: var(--color3);
-    --ws-empty: var(--color8);
-    --ws-hover: var(--color1);
-    --ws-urgent: var(--color12);
-}
+@import "trial.css";
 
 * {
     all: unset;
@@ -36,9 +9,9 @@
 }
 
 #seperators {
+    color: var(--color8);
     font-size: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 0 10px 5px 10px;
 }
 
 #status-bar {
