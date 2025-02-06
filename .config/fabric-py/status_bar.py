@@ -6,6 +6,7 @@ from fabric.widgets.centerbox import CenterBox
 from fabric.widgets.box import Box
 from fabric.widgets.datetime import DateTime
 from fabric.system_tray.widgets import SystemTray
+from fabric.hyprland.widgets import WorkspaceButton, Workspaces
 from fabric.utils import get_relative_path
 
 
@@ -20,6 +21,14 @@ class StatusBar(Window):
             margin = '10px -5px 0px 12px',
             visible = False
         )
+
+        self.workspace = Workspaces(
+            name = 'workspaces',
+            spacing= 10,
+            buttons = [WorkspaceButton(id=wd+1, label=f'{wd+1}') for wd in range(5)],
+            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=f'{wd}') if  wd != -99 else WorkspaceButton(id=wd, label='') 
+        )
+        print(self.workspace._active_workspace)
 
         self.clock = DateTime(
             name = 'clock'
@@ -47,8 +56,8 @@ class StatusBar(Window):
                 name = 'middle-container',
                 children = [Label('Active Clients'),
                             Label('|', name='seperators'),
-                            Label('Workspaces'), Label('|',
-                            name='seperators'),
+                            self.workspace, 
+                            Label('|',name='seperators'),
                             Label('Notifications')]),
 
             end_children = Box(
