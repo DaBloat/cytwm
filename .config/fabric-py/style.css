@@ -8,18 +8,14 @@
     border-radius: 12px;
 }
 
-#seperators {
-    color: var(--color8);
-    font-size: 20px;
-    padding: 0 10px 5px 10px;
-}
-
-#workspaces {
-    margin: 10px;
-}
-
 #status-bar {
     background-color: transparent;
+}
+
+#seperators {
+    color: var(--seperators);
+    font-size: 20px;
+    padding: 0 10px 5px 10px;
 }
 
 #bar {
@@ -27,8 +23,29 @@
     border: solid 4px var(--border-color);
     margin: 0 1rem 0.3rem 0;
     box-shadow: 4px 4px #331e12;
-}
+}s
 
 #left-container, #middle-container, #right-container {
-  margin: 10px;
+  margin: 0 10px 0 10px;
+}
+
+#workspaces {
+    min-width: 0px;
+    margin: 7px 0;
+}
+
+button {
+    background-size: 400% 400%;
+}
+
+#workspaces>button {
+    border-radius: 100px;
+    padding: 0 8px;
+    background-color: #331e12;
+}
+
+#workspaces>button>label {
+    font-size: 15px;
+    color: #d4baa4;
+    padding: 2px;
 }

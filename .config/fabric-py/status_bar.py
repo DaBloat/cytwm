@@ -24,9 +24,9 @@ class StatusBar(Window):
 
         self.workspace = Workspaces(
             name = 'workspaces',
-            spacing= 10,
+            spacing= 2,
             buttons = [WorkspaceButton(id=wd+1, label=f'{wd+1}') for wd in range(5)],
-            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=f'{wd}') if  wd != -99 else WorkspaceButton(id=wd, label='') 
+            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=f"{wd}") if  wd != -99 else WorkspaceButton(id=wd, label="\uf21b") 
         )
         print(self.workspace._active_workspace)
 
