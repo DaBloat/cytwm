@@ -1,5 +1,6 @@
 # Wol.py
-## This is currently in Progress
+## This is currently in Working Progress
+### Updates are slow since I'm studdying for my degree...
 - my archlinux dotfiles using Hyprland and Fabric
 
 ### Themes
