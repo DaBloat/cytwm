@@ -26,26 +26,31 @@
 }s
 
 #left-container, #middle-container, #right-container {
-  margin: 0 10px 0 10px;
+  margin: 0 10px;
 }
 
 #workspaces {
     min-width: 0px;
-    margin: 7px 0;
-}
-
-button {
-    background-size: 400% 400%;
+    margin: 13px 0;
 }
 
 #workspaces>button {
+    border: solid 2px var(--border-color);
     border-radius: 100px;
     padding: 0 8px;
-    background-color: #331e12;
+    background-color: var(--seperators);
+    transition: padding 0.1s steps(255);
 }
 
 #workspaces>button>label {
-    font-size: 15px;
-    color: #d4baa4;
-    padding: 2px;
+    font-size: 0px;
+}
+
+#workspaces>button.active {
+    padding: 0px 20px;
+    background-color: var(--ws-active);
+}
+
+#workspaces>button.empty {
+    background-color: var(--ws-empty);
 }
