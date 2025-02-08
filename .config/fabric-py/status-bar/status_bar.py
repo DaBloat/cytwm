@@ -69,7 +69,7 @@ class StatusBar(Window):
         )
 
         self.battery = Button(
-            name = 'batery-button',
+            name = 'battery-button',
             image = Image(
                     'icons/status_bar/battery-vertical.svg',
                     )
@@ -96,33 +96,33 @@ class StatusBar(Window):
             start_children = Box(
                 name = 'left-container',
                 children = [self.start,
-                            Label('|', name='seperators'),
+                            Label('|', name='separators'),
                             Label('Spotify'),
-                            Label('|', name='seperators'),
+                            Label('|', name='separators'),
                             Label('Applications'),]
                     ),
 
             center_children = Box(
                 name = 'middle-container',
                 children = [self.active_clients,
-                            Label('|', name='seperators'),
+                            Label('|', name='separators'),
                             self.workspace, 
-                            Label('|',name='seperators'),
+                            Label('|',name='separators'),
                             self.notifications]),
 
             end_children = Box(
                 name='right-container',
                 children = [
                     self.system_tray,
-                    Label('|', name='seperators'),
+                    Label('|', name='separators'),
                     self.clock,
-                    Label('|', name='seperators'),
+                    Label('|', name='separators'),
                     self.bluetooth,
-                    Label('|', name='seperators'),
+                    Label('|', name='separators'),
                     self.wifi,
-                    Label('|', name='seperators'),
+                    Label('|', name='separators'),
                     self.battery,
-                    Label('|', name='seperators'),
+                    Label('|', name='separators'),
                     self.settings]
             )
         ) 

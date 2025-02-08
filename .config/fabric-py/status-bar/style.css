@@ -12,8 +12,8 @@
     background-color: transparent;
 }
 
-#seperators {
-    color: var(--seperators);
+#separators {
+    color: var(--separators);
     font-size: 20px;
     padding: 0 10px 5px 10px;
 }
@@ -38,7 +38,7 @@
     border: solid 2px var(--border-color);
     border-radius: 100px;
     padding: 8px;
-    background-color: var(--seperators);
+    background-color: var(--separators);
     transition: padding 0.1s steps(255);
 }
 
