@@ -1,0 +1,15 @@
+:vars {
+    --background: #d4baa4;
+    --foreground: #331e12;
+    --seperators: #585858;
+    --ws-active: var(--foreground);
+    --ws-inactive: var(--color3);
+    --ws-empty: var(--background);
+    --ws-hover: var(--color1);
+    --ws-urgent: var(--color12);
+    --window-bg: alpha(var(--background),1);
+    --module-bg: alpha(var(--background),1);
+    --border-color: var(--foreground);
+}
+
+/*this is linke to cyna-colors*/
