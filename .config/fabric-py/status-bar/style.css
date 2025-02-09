@@ -34,6 +34,10 @@
     margin: 13px 0;
 }
 
+#special {
+    background-color: transparent;
+}
+
 #workspaces>button {
     border: solid 2px var(--border-color);
     border-radius: 100px;

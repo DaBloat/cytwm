@@ -19,28 +19,28 @@ class StatusBar(Window):
             exclusivity= "auto",
             anchor = "left top right",
             margin = '10px -5px 0px 12px',
-            visible = False
+            visible = False 
         )
 
         self.active_clients = Button(
             name = 'active-clients-button',
             image = Image(
-                    'icons/status_bar/apps.svg',
+                    'icons/status_bar/menu.svg',
                     )
         )
-
+        
         self.workspace = Workspaces(
             name = 'workspaces',
             spacing= 4,
             buttons = [WorkspaceButton(id=wd+1, label=None) for wd in range(5)],
-            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=None) if  wd != -99 else WorkspaceButton(id=wd, label="\uf21b") 
+            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=None)
         )
         print(self.workspace._active_workspace)
 
         self.notifications = Button(
             name = 'notification-button',
             image = Image(
-                    'icons/status_bar/bell.svg',
+                    'icons/status_bar/notification.svg',
                     )
         )
 
@@ -57,7 +57,7 @@ class StatusBar(Window):
         self.start = Button(
             name = 'start-button',
             image = Image(
-                    'icons/status_bar/user.svg',
+                    'icons/status_bar/account.svg',
                     )
         )
 
@@ -71,7 +71,7 @@ class StatusBar(Window):
         self.battery = Button(
             name = 'battery-button',
             image = Image(
-                    'icons/status_bar/battery-vertical.svg',
+                    'icons/status_bar/battery.svg',
                     )
         )
 
@@ -88,6 +88,13 @@ class StatusBar(Window):
                     'icons/status_bar/settings.svg',
                     )
         )
+        
+        self.applications = Button(
+            name = 'applications-button',
+            image = Image(
+                    'icons/status_bar/app.svg',
+                    )
+        )
 
 
         self.children = CenterBox(
@@ -97,9 +104,9 @@ class StatusBar(Window):
                 name = 'left-container',
                 children = [self.start,
                             Label('|', name='separators'),
-                            Label('Spotify'),
+                            self.applications,
                             Label('|', name='separators'),
-                            Label('Applications'),]
+                            Label('Spotify'),]
                     ),
 
             center_children = Box(
