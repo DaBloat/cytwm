@@ -9,7 +9,8 @@ from fabric.widgets.button import Button
 from fabric.hyprland.widgets import WorkspaceButton, Workspaces
 from fabric.widgets.image import Image
 from fabric.utils import get_relative_path
-from icons.directory import Icons
+from components.buttons import *
+from components.misc import *
 
 class StatusBar(Window):
     def __init__(self):
@@ -45,9 +46,7 @@ class StatusBar(Window):
                     )
         )
 
-        self.clock = DateTime(
-            name = 'clock'
-        )
+        self.clock = ClockButton()
 
         self.system_tray = SystemTray(
             name = 'sys-tray',
@@ -100,37 +99,37 @@ class StatusBar(Window):
 
         self.children = CenterBox(
             name = 'bar',
-            size = [55, 55],
+            size = [58, 58],
             start_children = Box(
                 name = 'left-container',
                 children = [self.start,
-                            Label('|', name='separators'),
+                            Separator(),
                             self.applications,
-                            Label('|', name='separators'),
+                            Separator(),
                             Label('Spotify'),]
                     ),
 
             center_children = Box(
                 name = 'middle-container',
                 children = [self.active_clients,
-                            Label('|', name='separators'),
+                            Separator(),
                             self.workspace, 
-                            Label('|',name='separators'),
+                            Separator(),
                             self.notifications]),
 
             end_children = Box(
                 name='right-container',
                 children = [
                     self.system_tray,
-                    Label('|', name='separators'),
+                    Separator(),
                     self.clock,
-                    Label('|', name='separators'),
+                    Separator(),
                     self.bluetooth,
-                    Label('|', name='separators'),
+                    Separator(),
                     self.wifi,
-                    Label('|', name='separators'),
+                    Separator(),
                     self.battery,
-                    Label('|', name='separators'),
+                    Separator(),
                     self.settings]
             )
         ) 

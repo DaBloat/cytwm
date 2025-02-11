@@ -18,6 +18,16 @@
     padding: 0 10px 5px 10px;
 }
 
+
+#clock-button {
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+#clock-button:hover {
+    border-bottom: solid 3px var(--hover);
+}
+
 #bar {
     background-color: var(--background);
     border: solid 4px var(--border-color);
@@ -46,9 +56,17 @@
     font-size: 0px;
 }
 
+#workspaces>button:hover {
+    background-color: var(--ws-hover);
+}
+
 #workspaces>button.active {
     padding: 0px 20px;
     background-color: var(--ws-active);
+}
+
+#workspaces>button.inactive {
+    background-color: var(--ws-inactive);
 }
 
 #workspaces>button.empty {
