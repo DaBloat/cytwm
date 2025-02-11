@@ -8,6 +8,10 @@
     border-radius: 12px;
 }
 
+#try {
+    background-color: brown;
+}
+
 #status-bar {
     background-color: transparent;
 }

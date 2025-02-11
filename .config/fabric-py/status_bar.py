@@ -11,6 +11,7 @@ from fabric.widgets.image import Image
 from fabric.utils import get_relative_path
 from components.buttons import *
 from components.misc import *
+from components.widgets import *
 
 class StatusBar(Window):
     def __init__(self):
@@ -45,8 +46,10 @@ class StatusBar(Window):
                     'icons/directory/notification.svg',
                     )
         )
-
-        self.clock = ClockButton()
+        
+        self.clock_info = TimeAndDate(parent=self)
+        self.clock = ClockButton(widget=self.clock_info)
+        self.clock_info.set_pointing_to(self.clock)
 
         self.system_tray = SystemTray(
             name = 'sys-tray',
@@ -122,14 +125,14 @@ class StatusBar(Window):
                 children = [
                     self.system_tray,
                     Separator(),
-                    self.clock,
-                    Separator(),
                     self.bluetooth,
                     Separator(),
                     self.wifi,
                     Separator(),
                     self.battery,
                     Separator(),
+                    self.clock,
+                    Separator(),              
                     self.settings]
             )
         ) 
