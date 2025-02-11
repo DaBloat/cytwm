@@ -5,11 +5,11 @@ from datetime import datetime
 from fabric.widgets.image import Image
 from fabric.utils import invoke_repeater
 
-
 class ClockButton(Button):
-    def __init__(self):
+    def __init__(self, widget=None):
         super().__init__(
             name='clock-button',
+            on_clicked = lambda *_ : widget.show() if not widget.is_visible() else widget.hide() 
         )
         self.time = Label()
         self.children = self.time
@@ -20,6 +20,7 @@ class ClockButton(Button):
     def update_time(self):
         self.time.set_label(f'{datetime.now().strftime('%I:%M %p')}')
         return True
+
         
         
         
