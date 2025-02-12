@@ -8,10 +8,6 @@
     border-radius: 12px;
 }
 
-#try {
-    background-color: brown;
-}
-
 #status-bar {
     background-color: transparent;
 }
@@ -29,6 +25,15 @@
 }
 
 #clock-button:hover {
+    border-bottom: solid 3px var(--hover);
+}
+
+#battery-button {
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+#battery-button:hover {
     border-bottom: solid 3px var(--hover);
 }
 

@@ -71,12 +71,7 @@ class StatusBar(Window):
                     )
         )
 
-        self.battery = Button(
-            name = 'battery-button',
-            image = Image(
-                    'icons/directory/battery.svg',
-                    )
-        )
+        self.battery = BatteryButton()
 
         self.wifi = Button(
             name = 'wifi-button',
@@ -102,7 +97,7 @@ class StatusBar(Window):
 
         self.children = CenterBox(
             name = 'bar',
-            size = [58, 58],
+            size = [60, 60],
             start_children = Box(
                 name = 'left-container',
                 children = [self.start,
@@ -132,7 +127,7 @@ class StatusBar(Window):
                     self.battery,
                     Separator(),
                     self.clock,
-                    Separator(),              
+                    Separator(),             
                     self.settings]
             )
         ) 
