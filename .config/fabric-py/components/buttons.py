@@ -1,9 +1,10 @@
 import subprocess
+from datetime import datetime
 from fabric.widgets.button import Button
 from fabric.widgets.box import Box
 from fabric.widgets.label import Label
-from datetime import datetime
 from fabric.widgets.image import Image
+from fabric.widgets.circularprogressbar import CircularProgressBar
 from fabric.utils import invoke_repeater
 
 class ClockButton(Button):
@@ -28,10 +29,18 @@ class BatteryButton(Button):
             name='battery-button',
             on_clicked = lambda *_ : widget.show() if not widget.is_visible() else widget.hide() 
         )
-        self.battery_icons = {'Discharging':Image('icons/directory/battery.svg'), 'Charging':Image('icons/directory/battery_charging.svg')}
-        self.battery_percent = Label()
         
-        self.children = [self.battery_percent]
+        self.percent = Label()
+        self.icon = {'Discharging':Image('icons/directory/battery.svg'), 
+                     'Charging':Image('icons/directory/battery_charging.svg'), 
+                     'Full':Image('icons/directory/battery_charging.svg'),
+                     'Not charging':Image('icons/directory/battery.svg')}
+        
+        self.battery_icon = Box()
+        self.battery_percent = Box(children=self.percent)
+        
+        self.children = Box(v_expand=True, v_align='center', children=[self.battery_icon, self.battery_percent])
+        
         invoke_repeater(1000, self.display_battery)
         
     def fetch_status(self):
@@ -49,7 +58,8 @@ class BatteryButton(Button):
         return percent
         
     def display_battery(self):
-        self.battery_percent.set_label(f'{self.fetch_percentage()}%')
+        self.percent.set_label(f'{self.fetch_percentage()}%')
+        self.battery_icon.children = self.icon[self.fetch_status()]
         return True
 
         
