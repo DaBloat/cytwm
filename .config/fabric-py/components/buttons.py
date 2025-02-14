@@ -45,8 +45,8 @@ class BatteryButton(Button):
                       '8 - nc':Image('icons/battery/battery-80.svg'),
                       '9 - c':Image('icons/battery/battery-charging-90.svg'), 
                       '9 - nc':Image('icons/battery/battery-90.svg'),
-                      '10 - c':Image('icons/battery/battery-charging-full.svg'), 
-                      '10 - nc':Image('icons/battery/battery-full.svg'),}
+                      'full - c':Image('icons/battery/battery-charging-full.svg'), 
+                      'full - nc':Image('icons/battery/battery-full.svg'),}
         
         self.battery_icon = Box()
         self.battery_percent = Box(children=self.percent)
@@ -70,7 +70,7 @@ class BatteryButton(Button):
         return int(percent)
     
     def fetch_boundary(self, val:int):
-        indiv = [2, 8, 9]
+        indiv = [2, 5, 8, 9]
         if val <= 1:
             return '05'
         elif val <= 4 and val not in indiv:
@@ -95,6 +95,7 @@ class BatteryButton(Button):
     def display_battery(self):
         self.percent.set_label(f'{self.fetch_percentage()}%')
         print(self.fetch_state())
+        print(self.fetch_status())
         # print(self.fetch_boundary(self.fetch_state()))
         self.battery_icon.children = self.icons[self.fetch_state()]
         return True
