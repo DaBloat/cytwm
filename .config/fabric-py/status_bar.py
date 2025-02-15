@@ -12,6 +12,9 @@ from fabric.utils import get_relative_path
 from components.buttons import *
 from components.misc import *
 from components.widgets import *
+from icons.directory import Icons
+
+icon = Icons()
 
 class StatusBar(Window):
     def __init__(self):
@@ -27,9 +30,7 @@ class StatusBar(Window):
 
         self.active_clients = Button(
             name = 'active-clients-button',
-            image = Image(
-                    'icons/directory/menu.svg',
-                    )
+            image = icon.menu
         )
         
         self.workspace = Workspaces(
