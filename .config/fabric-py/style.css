@@ -81,3 +81,23 @@
 #workspaces>button.empty {
     background-color: var(--ws-empty);
 }
+
+#clock-widget {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+#calendar-box{
+    background-color: var(--background);
+    margin: 5px 5px 5px 5px;
+}
+
+#activities-box{
+    background-color: var(--background);
+    margin: 5px 5px 5px 0px;
+}
+
+#uptime-box{
+    background-color: var(--background);
+    margin: 0px 5px 5px 0px;
+}

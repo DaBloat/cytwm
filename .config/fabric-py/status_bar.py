@@ -50,7 +50,6 @@ class StatusBar(Window):
         
         self.clock_info = ClockWidget(parent=self)
         self.clock = ClockButton(widget=self.clock_info)
-        self.clock_info.set_pointing_to(self.clock)
 
         self.system_tray = SystemTray(
             name = 'sys-tray',
@@ -94,12 +93,8 @@ class StatusBar(Window):
                     'icons/directory/app.svg',
                     )
         )
-
-
-        self.children = CenterBox(
-            name = 'bar',
-            size = [60, 60],
-            start_children = Box(
+        
+        self.left = Box(
                 name = 'left-container',
                 children = [self.start,
                             Separator(),
@@ -107,16 +102,16 @@ class StatusBar(Window):
                             Separator(),
                             Label('Spotify'),]
                     ),
-
-            center_children = Box(
+        
+        self.center = Box(
                 name = 'middle-container',
                 children = [self.active_clients,
                             Separator(),
                             self.workspace, 
                             Separator(),
                             self.notifications]),
-
-            end_children = Box(
+        
+        self.right = Box(
                 name='right-container',
                 children = [
                     self.system_tray,
@@ -131,6 +126,16 @@ class StatusBar(Window):
                     Separator(),             
                     self.settings]
             )
+        
+        self.clock_info.set_pointing_to(self.right)
+
+
+        self.children = CenterBox(
+            name = 'bar',
+            size = [60, 60],
+            start_children = self.left,
+            center_children = self.center,
+            end_children = self.right
         ) 
 
         self.show_all()
