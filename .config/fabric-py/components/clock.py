@@ -27,7 +27,8 @@ class ClockWidget(PopupWindow):
     def __init__(self, parent, pointing_to = None):
         super().__init__(parent,
                          pointing_to,
-                         margin='10px',
+                         margin = '10px',
+                         name='clock-widget',
                          visible = False,
                          all_visible = False)
         self.calendar = Calendar()
@@ -35,26 +36,29 @@ class ClockWidget(PopupWindow):
         self.uptime = Uptime()
         self.left = Box(orientation='v', children=[self.calendar])
         self.right = Box(orientation='v', children=[self.activities, self.uptime])
-        self.children = CenterBox(start_children=[self.left, self.right])
+        self.children = CenterBox(size=[350, 130], h_expand=True, v_expand=True, start_children=[self.left, self.right])
         
 class Calendar(Box):
     def __init__(self):
         super().__init__(
-            name='calendar',
+            name='calendar-box',
+            size=[130,130]
         )
         self.children = [Label('Calendar')]
         
 class Activities(Box):
     def __init__(self):
         super().__init__(
-            name='activities',
+            name='activities-box',
+            size=[220,100]
         )
         self.children = [Label('Activities')]
 
 class Uptime(Box):
     def __init__(self):
         super().__init__(
-            name='uptime',
+            name='uptime-box',
+            size=[220,20]
         )
         self.children = [Label('uptime')]
         
