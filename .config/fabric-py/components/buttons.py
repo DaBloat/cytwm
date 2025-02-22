@@ -6,22 +6,6 @@ from fabric.widgets.label import Label
 from fabric.widgets.image import Image
 from fabric.widgets.circularprogressbar import CircularProgressBar
 from fabric.utils import invoke_repeater
-
-class ClockButton(Button):
-    def __init__(self, widget=None):
-        super().__init__(
-            name='clock-button',
-            on_clicked = lambda *_ : widget.show() if not widget.is_visible() else widget.hide() 
-        )
-        self.time = Label()
-        self.children = self.time
-        
-        invoke_repeater(1000, self.update_time)
-        
-        
-    def update_time(self):
-        self.time.set_label(f'{datetime.now().strftime('%I:%M %p')}')
-        return True
     
 class BatteryButton(Button):
     def __init__(self, widget=None):
