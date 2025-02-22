@@ -10,8 +10,8 @@ from fabric.hyprland.widgets import WorkspaceButton, Workspaces
 from fabric.widgets.image import Image
 from fabric.utils import get_relative_path
 from components.buttons import *
+from components.clock import *
 from components.misc import *
-from components.widgets import *
 from icons.directory import Icons
 
 icon = Icons()
@@ -48,7 +48,7 @@ class StatusBar(Window):
                     )
         )
         
-        self.clock_info = TimeAndDate(parent=self)
+        self.clock_info = ClockWidget(parent=self)
         self.clock = ClockButton(widget=self.clock_info)
         self.clock_info.set_pointing_to(self.clock)
 
