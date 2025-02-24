@@ -78,8 +78,6 @@ class BatteryButton(Button):
 
     def display_battery(self):
         self.percent.set_label(f'{self.fetch_percentage()}%')
-        print(self.fetch_state())
-        print(self.fetch_status())
         # print(self.fetch_boundary(self.fetch_state()))
         self.battery_icon.children = self.icons[self.fetch_state()]
         return True
