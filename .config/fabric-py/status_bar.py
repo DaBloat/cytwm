@@ -10,7 +10,6 @@ from fabric.hyprland.widgets import WorkspaceButton, Workspaces
 from fabric.widgets.image import Image
 from fabric.utils import get_relative_path
 from components.buttons import *
-from components.clock import *
 from components.misc import *
 from icons.directory import Icons
 
@@ -48,8 +47,7 @@ class StatusBar(Window):
                     )
         )
         
-        self.clock_info = ClockWidget(parent=self)
-        self.clock = ClockButton(widget=self.clock_info)
+        self.clock = DateTime(name='clock-button')
 
         self.system_tray = SystemTray(
             name = 'sys-tray',
@@ -127,7 +125,6 @@ class StatusBar(Window):
                     self.settings]
             )
         
-        self.clock_info.set_pointing_to(self.right)
 
 
         self.children = CenterBox(
