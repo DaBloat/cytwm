@@ -36,7 +36,7 @@ class StatusBar(Window):
             name = 'workspaces',
             spacing= 4,
             buttons = [WorkspaceButton(id=wd+1, label=None) for wd in range(5)],
-            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=None)
+            buttons_factory= lambda wd: WorkspaceButton(id=wd, label=None) if wd != -97 else print('pop')
         )
         print(self.workspace._active_workspace)
 
