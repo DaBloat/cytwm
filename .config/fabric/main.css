@@ -1,2 +1,10 @@
 @import 'style/cyna-colors.css';
 @import 'style/bar.css';
+
+* {
+    all: unset;
+    color: var(--foreground);
+    font-size: 18px;
+    font-family: "Itim";
+    border-radius: 12px;
+}
