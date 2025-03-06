@@ -5,7 +5,7 @@ class WorkSpace(Workspaces):
         super().__init__(
             name = 'workspaces',
             spacing = 5,
-            buttons = [WorkspaceButton(id=wd+1, label=str(wd+1)) for wd in range(5)],
-            buttons_factory = lambda wd: WorkspaceButton(id=wd, label=str(wd)) if wd != -99 else WorkspaceButton(id=wd, label="SECRET")
+            buttons = [WorkspaceButton(id=wd+1, label=None) for wd in range(5)],
+            buttons_factory = lambda wd: WorkspaceButton(id=wd, label=None) if wd != -99 else WorkspaceButton(id=wd, label="SECRET")
         )
 
