@@ -84,14 +84,15 @@ change_fabric(){
 }
 
 if [[ $TYPE == 'wall-dark.png' ]] then
-	swww img --transition-type wipe --transition-angle 30 --transition-step 120 --transition-fps 160 $WALL_PATH/wall.png
+	swww img --transition-type wipe --transition-angle 30 --transition-step 60 --transition-fps 120 $WALL_PATH/wall.png
 	add_to_default $DCOLOR_BORDER 4
 	change_kitty light
 	change_fabric $DCOLOR_BORDER $LCOLOR_BORDER light
 
 elif [[ $TYPE == 'wall.png' ]] then
-	swww img --transition-type wipe --transition-angle 30 --transition-step 120 --transition-fps 160 $WALL_PATH/wall-dark.png
+	swww img --transition-type wipe --transition-angle 210 --transition-step 60 --transition-fps 120 $WALL_PATH/wall-dark.png
 	add_to_default $LCOLOR_BORDER 0
 	change_kitty dark
 	change_fabric $LCOLOR_BORDER $DCOLOR_BORDER dark
 fi
+5123
