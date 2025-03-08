@@ -4,14 +4,14 @@
     margin: 10px 0;
 }
 
-#workspaces>button {
+button {
     border: solid 2px var(--foreground);
     background-color: var(--background);
     padding: 10px;
     transition: padding 0.1s steps(255);
 }
 
-#workspaces>button.active {
+button.active {
     padding: 0 20px;
     background-color: var(--foreground);
 }
