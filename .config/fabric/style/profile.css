@@ -1,0 +1,15 @@
+#profile {
+    color: var(--foreground);
+    margin: 3px 12px;
+    padding: 3px 6px;
+}
+
+#profile>label {
+    font-size: 23px;
+    font-family: 'NotoSansM Nerd Font Propo';
+}
+
+#profile:hover {
+    color: var(--background);
+    background-color: var(--foreground);
+}
