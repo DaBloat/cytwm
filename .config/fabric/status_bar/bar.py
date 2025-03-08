@@ -3,6 +3,7 @@ from fabric.widgets.centerbox import CenterBox
 from fabric.widgets.box import Box
 from fabric.widgets.label import Label
 from status_bar.components.workspace import WorkSpace
+from status_bar.components.profile import Profile
 
 
 class StatusBar(Window):
@@ -25,7 +26,7 @@ class StatusBar(Window):
         
         self.children = CenterBox(
             name='bar',
-            start_children=Label('start'),
+            start_children=Profile(),
             center_children=self.center,
             end_children=Label('end'),
         )
