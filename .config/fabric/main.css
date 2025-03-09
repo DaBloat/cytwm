@@ -9,3 +9,9 @@
     border-radius: 12px;
     font-family: 'Itim';
 }
+
+#separators {
+    color: var(--gray);
+    font-family: 'Itim';
+    margin: 2px 5px 5px 5px;
+}

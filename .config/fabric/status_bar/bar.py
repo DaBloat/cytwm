@@ -22,6 +22,7 @@ class StatusBar(Window):
         self.profile = ProfileWidgets(parent=self)
         
         self.start = Box(
+            name='start-box',
             children=[
                 Profile(widget=self.profile),
                 Separator()
