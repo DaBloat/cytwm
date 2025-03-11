@@ -13,3 +13,24 @@
     color: var(--background);
     background-color: var(--foreground);
 }
+
+#pfp {
+    border: solid 1px var(--foreground);
+    margin: 10px 30px 5px;
+}
+
+#whoami  {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+}
+
+#user {
+    color: var(--foreground);
+    font-family: 'Itim';
+}
+
+#alias {
+    margin: 0 0 10px;
+    color: var(--foreground);
+    font-family: 'Itim';
+}
