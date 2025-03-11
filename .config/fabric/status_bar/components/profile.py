@@ -17,5 +17,24 @@ class ProfileWidgets(PopupWindow):
             parent=parent,
             visible = False,
             all_visible = False)
-        self.children = Label('Test')
+        
+        self.children = Box(
+                children=[self.left_wing(), self.middle_wing(), self.right_wing()]
+        )
+        
+    def left_wing(self):
+        return Box(
+            children=Label('left')
+        )
+    
+    def middle_wing(self):
+        return Box(
+            children=Label('middle')
+        )
+    
+    def right_wing(self):
+        return Box(
+            children=Label('right')
+        )        
+        
     
