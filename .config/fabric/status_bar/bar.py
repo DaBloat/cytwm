@@ -19,12 +19,14 @@ class StatusBar(Window):
             visible = False
         )
         
-        self.profile = ProfileWidgets(parent=self)
+        self.profile_widget = ProfileWidgets(parent=self)
+        self.profile_button = Profile(widget=self.profile_widget)
+        self.profile_widget.set_pointing_to(self.profile_widget)
         
         self.start = Box(
             name='start-box',
             children=[
-                Profile(widget=self.profile),
+                self.profile_button,
                 Separator()
             ]
         )
