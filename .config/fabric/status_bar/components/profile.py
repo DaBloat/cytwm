@@ -42,9 +42,27 @@ class ProfileWidgets(PopupWindow):
         uptime = str((time.time() - psutil.boot_time()) / 3600).split('.')
         hour = int(uptime[0])
         minute = int(float('.'+uptime[1]) * 60)
-        self.uptime.set_label(f'{hour} Hour and {minute} minute(s)')
+        if hour > 0 and minute == 0:
+            self.uptime.set_label(f"{self.hour_(hour)}")
+        else:
+            self.uptime.set_label(f"{self.hour_(hour)}{self.mins_(minute)}")
         return True
+    
+    def hour_(self, hr):
+        if hr > 1:
+            return f'{hr} hours '
+        elif hr == 1:
+            return f'{hr} hour '
+        else:
+            return ''
         
+    def mins_(self, min):
+        if min > 1:
+            return f'{min} mins'
+        elif min == 1:
+            return f'{min} min'
+        else:
+            return ''           
         
     def left_wing(self):
         self.whoami = Box(
@@ -52,7 +70,7 @@ class ProfileWidgets(PopupWindow):
             name='whoami',
             children=[self.pfp, 
                       Label(f'{str(getpass.getuser()).capitalize()}', name='user'),
-                      Label(f'{socket.gethostname()}', name='alias')]    
+                      Label(f'{socket.gethostname()}', name='hostname')]    
         )       
         
         return Box(
@@ -61,11 +79,11 @@ class ProfileWidgets(PopupWindow):
         )
     
     def middle_wing(self):
-        self.uptime = Label()
+        self.uptime = Label(name='uptime')
         self.uptime_box = Box(
             orientation='v',
             name='uptime-box',
-            children=[self.uptime, Label('Uptime')]
+            children=[self.uptime, Label('Uptime', name='uptime-label')]
         )
         
         return Box(
