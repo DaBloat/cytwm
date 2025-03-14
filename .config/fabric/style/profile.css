@@ -19,7 +19,7 @@
     margin: 10px 30px 5px;
 }
 
-#whoami  {
+#whoami, #uptime-box  {
     margin: 0 10px 0 0px;
     background-color: var(--background);
     border: solid 2px var(--foreground);
@@ -32,6 +32,13 @@
 
 #hostname {
     margin: 0 0 10px;
+    font-size: 12px; 
+    color: var(--foreground);
+    font-family: 'Itim';
+}
+
+#uptime-label {
+    margin: 0 5px 0 5px;
     font-size: 12px; 
     color: var(--foreground);
     font-family: 'Itim';

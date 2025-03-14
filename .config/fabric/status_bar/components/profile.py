@@ -18,10 +18,10 @@ class ProfileWidgets(PopupWindow):
     def __init__(self, parent):
         super().__init__(
             parent=parent,
-            margin='10px',
+            margin='10px 0px',
             visible = False,
             all_visible = False)
-        
+    
         self.pfp = Box(
             name = 'pfp',
             children = RoundedImage(
@@ -37,30 +37,34 @@ class ProfileWidgets(PopupWindow):
         
         invoke_repeater(1000, self.uptime_update)
         
-        
     def uptime_update(self):
         uptime = str((time.time() - psutil.boot_time()) / 3600).split('.')
         hour = int(uptime[0])
         minute = int(float('.'+uptime[1]) * 60)
-        if hour > 0 and minute == 0:
+        if hour == 0 and minute > 0:
+            self.uptime.set_label(f"{self.mins_(minute)}")
+            self.uptime.set_style('color: var(--foreground); margin: 0px 30px;')
+        elif hour > 0 and minute == 0:
             self.uptime.set_label(f"{self.hour_(hour)}")
+            self.uptime.set_style('color: var(--foreground); margin: 0px 30px;')
         else:
-            self.uptime.set_label(f"{self.hour_(hour)}{self.mins_(minute)}")
+            self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
+            self.uptime.set_style('color: var(--foreground);')
         return True
     
     def hour_(self, hr):
         if hr > 1:
-            return f'{hr} hours '
+            return str(f'{hr} hours')
         elif hr == 1:
-            return f'{hr} hour '
+            return str(f'{hr} hour')
         else:
             return ''
         
     def mins_(self, min):
         if min > 1:
-            return f'{min} mins'
+            return str(f'{min} mins')
         elif min == 1:
-            return f'{min} min'
+            return str(f'{min} min')
         else:
             return ''           
         
@@ -79,11 +83,11 @@ class ProfileWidgets(PopupWindow):
         )
     
     def middle_wing(self):
-        self.uptime = Label(name='uptime')
+        self.uptime = Label()
         self.uptime_box = Box(
-            orientation='v',
             name='uptime-box',
-            children=[self.uptime, Label('Uptime', name='uptime-label')]
+            size = [210, 15],
+            children=[ Label('Uptime: ', name='uptime-label'), self.uptime]
         )
         
         return Box(
