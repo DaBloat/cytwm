@@ -30,7 +30,28 @@ class ProfileWidgets(PopupWindow):
                     )
                 )
         
+        self.power_button = Button(
+            name='power-button',
+            child = Label(''),
+            size = [50, 50],
+            on_clicked = lambda x : os.system('sudo systemctl poweroff')
+            )
         
+        self.reboot_button = Button(
+            name='reboot-button',
+            child = Label('󰜉'),
+            size = [50, 50],
+            on_clicked = lambda x : os.system('sudo systemctl reboot')
+        )
+        
+        self.lock_button = Button(
+            name='lock-button',
+            child = Label(''),
+            size = [50, 50],
+            on_clicked = lambda x : print('still in progress!')
+        )
+
+        self.uptime = Label()
         self.children = Box(
                 children=[self.left_wing(), self.middle_wing(), self.right_wing()]
         )
@@ -41,12 +62,18 @@ class ProfileWidgets(PopupWindow):
         uptime = str((time.time() - psutil.boot_time()) / 3600).split('.')
         hour = int(uptime[0])
         minute = int(float('.'+uptime[1]) * 60)
-        if hour == 0 and minute > 0:
+        if hour == 0 and minute == 0:
+            self.uptime.set_label("< 1 min")
+            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
+        elif hour == 0 and minute > 0:
             self.uptime.set_label(f"{self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 30px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
         elif hour > 0 and minute == 0:
             self.uptime.set_label(f"{self.hour_(hour)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 30px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
+        elif (hour // 10) <= 0:
+            self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
+            self.uptime.set_style('color: var(--foreground); margin: 0px 10px;')
         else:
             self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
             self.uptime.set_style('color: var(--foreground);')
@@ -54,17 +81,17 @@ class ProfileWidgets(PopupWindow):
     
     def hour_(self, hr):
         if hr > 1:
-            return str(f'{hr} hours')
+            return f'{hr} hours'
         elif hr == 1:
-            return str(f'{hr} hour')
+            return f'{hr} hour'
         else:
             return ''
         
     def mins_(self, min):
         if min > 1:
-            return str(f'{min} mins')
+            return f'{min} mins'
         elif min == 1:
-            return str(f'{min} min')
+            return f'{min} min'
         else:
             return ''           
         
@@ -83,16 +110,21 @@ class ProfileWidgets(PopupWindow):
         )
     
     def middle_wing(self):
-        self.uptime = Label()
         self.uptime_box = Box(
             name='uptime-box',
-            size = [210, 15],
-            children=[ Label('Uptime: ', name='uptime-label'), self.uptime]
+            size = [185, 15],
+            children=[ Label('Up: ', name='uptime-label'), self.uptime]
+        )
+        
+        self.button_box = Box(
+            name =  'button-box',
+            children=[self.lock_button, self.reboot_button, self.power_button]
         )
         
         return Box(
+            orientation='v',
             v_align='start',
-            children=[self.uptime_box]
+            children=[self.uptime_box, self.button_box]
         )
     
     def right_wing(self):
