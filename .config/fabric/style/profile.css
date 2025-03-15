@@ -31,7 +31,7 @@
 }
 
 #hostname {
-    margin: 0 0 10px;
+    margin: 0 0 5px;
     font-size: 12px; 
     color: var(--foreground);
     font-family: 'Itim';
@@ -52,7 +52,7 @@
 }
 
 #button-box {
-    margin: 10px 0px;
+    margin: 10px 10px 10px 0px;
 }
 
 #power-button, #reboot-button, #lock-button {
@@ -65,4 +65,8 @@
 
 #reboot-button {
     margin: 0 10px;
+}
+
+#pacman-box {
+    margin: 0 10px 0 0px;
 }

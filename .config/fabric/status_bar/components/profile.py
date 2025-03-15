@@ -4,7 +4,7 @@ from fabric.widgets.box import Box
 from fabric.widgets.label import Label
 from status_bar.components.misc import RoundedImage
 from fabric.utils import get_relative_path, invoke_repeater
-import getpass, socket, os, psutil, time
+import getpass, socket, os, psutil, time, subprocess
 
 class Profile(Button):
     def __init__(self, widget=None):
@@ -112,7 +112,7 @@ class ProfileWidgets(PopupWindow):
     def middle_wing(self):
         self.uptime_box = Box(
             name='uptime-box',
-            size = [185, 15],
+
             children=[ Label('Up: ', name='uptime-label'), self.uptime]
         )
         
@@ -120,16 +120,47 @@ class ProfileWidgets(PopupWindow):
             name =  'button-box',
             children=[self.lock_button, self.reboot_button, self.power_button]
         )
+    
+        
+        self.pacman_packages = Box(
+            name='pacman-packages',
+            children= [
+                Label('󰣇'),
+                Label(f"{subprocess.check_output('sudo pacman -Q | wc -l', shell=True)}".split("'")[1].strip('\\n'))
+            ]
+        )
+        
+        self.pacman_updates = Box(
+            name = 'pacman-updates',
+            children = [
+                Label('󱧘'),
+                Label(f"{subprocess.check_output('checkupdates | wc -l', shell=True)}".split("'")[1].strip('\\n'))
+            ]
+        )
+        
+        self.aur_updates = Box(
+            name = 'aur-updates',
+            children = [
+                Label('󰏖'),
+                Label(f"{subprocess.check_output('yay -Qum | wc -l', shell=True)}".split("'")[1].strip('\\n'))
+            ]
+        )
+        
+        self.pacman_box = Box(
+            name = 'pacman-box',
+            size = [100, 15],
+            children = [self.pacman_packages, self.pacman_updates, self.aur_updates]
+        )
         
         return Box(
             orientation='v',
             v_align='start',
-            children=[self.uptime_box, self.button_box]
+            children=[self.uptime_box, self.button_box, self.pacman_box]
         )
     
     def right_wing(self):
         return Box(
-            children=Label('right')
+            children=Label('right'),
         )        
         
     
