@@ -53,7 +53,7 @@ class ProfileWidgets(PopupWindow):
 
         self.uptime = Label()
         self.children = Box(
-                children=[self.left_wing(), self.middle_wing(), self.right_wing()]
+                children=[self.left_wing(), self.right_wing()]
         )
         
         invoke_repeater(1000, self.uptime_update)
@@ -64,19 +64,19 @@ class ProfileWidgets(PopupWindow):
         minute = int(float('.'+uptime[1]) * 60)
         if hour == 0 and minute == 0:
             self.uptime.set_label("< 1 min")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
-        elif hour == 0 and minute > 0:
+            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  40px;')
+        elif hour == 0 and minute > 0:  
             self.uptime.set_label(f"{self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  40px;')
         elif hour > 0 and minute == 0:
             self.uptime.set_label(f"{self.hour_(hour)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  40px;')
         elif (hour // 10) <= 0:
             self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 10px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0 20px;')
         else:
             self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground);')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  5px;')
         return True
     
     def hour_(self, hr):
@@ -109,7 +109,7 @@ class ProfileWidgets(PopupWindow):
             children=[self.whoami]
         )
     
-    def middle_wing(self):
+    def right_wing(self):
         self.uptime_box = Box(
             name='uptime-box',
 
@@ -125,42 +125,21 @@ class ProfileWidgets(PopupWindow):
         self.pacman_packages = Box(
             name='pacman-packages',
             children= [
-                Label('󰣇'),
-                Label(f"{subprocess.check_output('sudo pacman -Q | wc -l', shell=True)}".split("'")[1].strip('\\n'))
-            ]
-        )
-        
-        self.pacman_updates = Box(
-            name = 'pacman-updates',
-            children = [
-                Label('󱧘'),
-                Label(f"{subprocess.check_output('checkupdates | wc -l', shell=True)}".split("'")[1].strip('\\n'))
-            ]
-        )
-        
-        self.aur_updates = Box(
-            name = 'aur-updates',
-            children = [
-                Label('󰏖'),
-                Label(f"{subprocess.check_output('yay -Qum | wc -l', shell=True)}".split("'")[1].strip('\\n'))
+                Label('󰏖', name='packages-logo'),
+                Label(f"{subprocess.check_output('sudo pacman -Q | wc -l', shell=True)}".split("'")[1].strip('\\n'), name='packages-label')
             ]
         )
         
         self.pacman_box = Box(
             name = 'pacman-box',
             size = [100, 15],
-            children = [self.pacman_packages, self.pacman_updates, self.aur_updates]
+            children = [self.pacman_packages]
         )
         
         return Box(
             orientation='v',
             v_align='start',
             children=[self.uptime_box, self.button_box, self.pacman_box]
-        )
-    
-    def right_wing(self):
-        return Box(
-            children=Label('right'),
-        )        
+        )  
         
     

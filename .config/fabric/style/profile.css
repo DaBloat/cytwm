@@ -31,7 +31,7 @@
 }
 
 #hostname {
-    margin: 0 0 5px;
+    margin: 0 0 8px;
     font-size: 12px; 
     color: var(--foreground);
     font-family: 'Itim';
@@ -67,6 +67,19 @@
     margin: 0 10px;
 }
 
-#pacman-box {
+#pacman-box{
+    border-radius: 5px 5px 12px 12px;
     margin: 0 10px 0 0px;
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+}
+
+#pacman-packages {
+    color: var(--foreground);
+    margin: 0px 50px;
+}
+
+#packages-logo{
+    margin: 0 5px 0;
+    font-family: 'NotoSansM Nerd Font Propo';
 }
