@@ -1,11 +1,27 @@
-# This is currently in Working Progress
-### Updates are slow since I'm stu'dying' for my degree...
-- my archlinux dotfiles using Hyprland and Fabric
+<div align='center'> <img src='CYWM.png'/></div>
+<div align='center'> 
+<p>
+  <i>✨Try reading it <b>'si-tweem'</b>  -DaBloat✨</i>
+</p>
+</div>
 
-### Themes
+## About
+Tiling window manager that focused in aesthethic and productivity in [Hyprland](https://github.com/hyprwm/Hyprland), powered by [Cyna Colors](https://github.com/DaBloat/cyna-colors) and [Fabric](https://github.com/Fabric-Development/fabric/)
 
-#### Creme (Light)
-![image](creme.png)
+## Showcase
 
-#### Coffee (Dark)
-![image](coffee.png)
+## Themes
+<div align = 'center'>
+<table>
+<tr>
+  <th>Creme</th>
+  <th>Coffee</th>
+</tr>
+<tr>
+  <th><div align='center'> <img src='creme.png'/></div></th>
+  <th><div align='center'> <img src='coffee.png'/></div></th>
+</tr>
+</table>
+</div>
+
+# NOTE: Not yet Finished! Not even in ALPHA TEST!
