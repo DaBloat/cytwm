@@ -5,10 +5,10 @@ WALL_PATH=$HOME/wallpaper
 DCOLOR_BORDER=331e12
 LCOLOR_BORDER=d4baa4
 HYPR_CONF=$HOME/.config/hypr/config/aesthetics/looks.conf
-CYNA_COLORS=$HOME/.config/cyna-colors/terminal
+CYNA_TERMINAL=$HOME/.config/cyna-colors/terminal
+CYNA_FABRIC=$HOME/.config/cyna-colors/fabric
 KITTY_CCONF=$HOME/.config/kitty/theme.conf
 FABRIC_CONF=$HOME/.config/fabric/style/cyna-colors.css
-FABRIC_BAR_CONF=$HOME/.config/fabric/style/bar.css
 
 TYPE=$(swww query | awk -F '/' '{print $5}')
 
@@ -55,44 +55,24 @@ add_to_default() {
 
 change_kitty(){
 	local theme=$1
-	cat $CYNA_COLORS/${1}_colors.conf >> $KITTY_CCONF
+	cat $CYNA_TERMINAL/${1}_colors.conf > $KITTY_CCONF
 	$(kill -SIGUSR1 $(pidof kitty)) # Resets kitty to change color
 }
 
 change_fabric(){
-	FOREGROUND=$1
-	BACKGROUND=$2
-	THEME=$3
-	
-	if grep -q "background" "$FABRIC_CONF"; then
-		sed -i "s/^.*--background.*/	--background: #$BACKGROUND;/" "$FABRIC_CONF"
-	fi
-
-	if grep -q "foreground" "$FABRIC_CONF"; then
-		sed -i "s/^.*--foreground.*/	--foreground: #$FOREGROUND;/" "$FABRIC_CONF"
-	fi
-
-	if [[ $THEME == 'light' ]] then
-		if grep -q "box-shadow" "$FABRIC_BAR_CONF"; then
-			sed -i "s/^.*box-shadow.*/	box-shadow: 4px 4px var(--foreground);/" "$FABRIC_BAR_CONF"
-		fi
-	elif [[ $THEME == 'dark' ]] then
-		if grep -q "box-shadow" "$FABRIC_BAR_CONF"; then
-			sed -i "s/^.*box-shadow.*/	box-shadow: 0px 0px var(--foreground);/" "$FABRIC_BAR_CONF"
-		fi
-	fi
+	local theme=$1
+	cat $CYNA_FABRIC/${1}.css > $FABRIC_CONF
 }
 
 if [[ $TYPE == 'wall-dark.png' ]] then
 	swww img --transition-type wipe --transition-angle 30 --transition-step 60 --transition-fps 120 $WALL_PATH/wall.png
 	add_to_default $DCOLOR_BORDER 4
 	change_kitty light
-	change_fabric $DCOLOR_BORDER $LCOLOR_BORDER light
+	change_fabric creme
 
 elif [[ $TYPE == 'wall.png' ]] then
 	swww img --transition-type wipe --transition-angle 210 --transition-step 60 --transition-fps 120 $WALL_PATH/wall-dark.png
 	add_to_default $LCOLOR_BORDER 0
 	change_kitty dark
-	change_fabric $LCOLOR_BORDER $DCOLOR_BORDER dark
+	change_fabric coffee
 fi
-5123
