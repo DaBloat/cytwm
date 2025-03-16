@@ -70,8 +70,7 @@ class UptimeInfo(Box):
         self.uptime = Label()
         self.children=[ Label('Up: ', name='uptime-label'), self.uptime]
         invoke_repeater(1000, self.uptime_update)
-        
-        
+           
     def uptime_update(self):
         uptime = str((time.time() - psutil.boot_time()) / 3600).split('.')
         hour = int(uptime[0])
@@ -135,9 +134,6 @@ class ProfileWidgets(PopupWindow):
             margin='10px 0px',
             visible = False,
             all_visible = False)
-        
-
-        
         self.left_side = Box(
             orientation = 'v',
             children = [UserInfo()]

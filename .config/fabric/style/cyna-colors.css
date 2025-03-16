@@ -1,5 +1,13 @@
 :vars {
 	--background: #331e12;
 	--foreground: #d4baa4;
+    --black: #1e1e1e;
+    --red: #d26b34;
+    --green: #4c8c8a;
+    --yellow: #e1c16e;
+    --blue: #4a76a8;
+    --magenta: #9b5b72;
+    --cyan: #a3c9b8;
+    --white: #d1b18d;
 	--gray: #5c5c5c;
 }
