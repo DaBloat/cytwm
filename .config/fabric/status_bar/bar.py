@@ -37,11 +37,16 @@ class StatusBar(Window):
             ]
         )
         
+        self.end = Box(
+            name = 'end-box'
+        )
+
+        
         self.children = CenterBox(
             name='bar',
             start_children=self.start,
             center_children=self.center,
-            end_children=Label('end'),
+            end_children=Label(''),
         )
         
 
