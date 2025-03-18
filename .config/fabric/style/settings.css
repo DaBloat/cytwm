@@ -1,0 +1,15 @@
+#settings {
+    color: var(--foreground);
+    margin: 3px 0px;
+    padding: 3px 6px;
+}
+
+#settings:hover {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+#settings>label {
+    font-size: 23px;
+    font-family: 'NotoSansM Nerd Font Propo';
+}
