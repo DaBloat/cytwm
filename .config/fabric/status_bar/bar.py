@@ -4,6 +4,7 @@ from fabric.widgets.box import Box
 from fabric.widgets.label import Label
 from status_bar.components.workspace import WorkSpace
 from status_bar.components.profile import Profile, ProfileWidgets
+from status_bar.components.settings import Settings, SettingsWidgets
 from status_bar.components.misc import Separator
 
 
@@ -23,6 +24,9 @@ class StatusBar(Window):
         self.profile_button = Profile(widget=self.profile_widget)
         self.profile_widget.set_pointing_to(self.profile_widget)
         
+        self.setting_widget = SettingsWidgets(parent=self)
+        self.setting_button = Settings(widget=self.setting_widget)
+        
         self.start = Box(
             name='start-box',
             children=[
@@ -38,7 +42,11 @@ class StatusBar(Window):
         )
         
         self.end = Box(
-            name = 'end-box'
+            name = 'end-box',
+            children = [
+                Separator(),
+                self.setting_button
+            ]
         )
 
         
@@ -46,7 +54,7 @@ class StatusBar(Window):
             name='bar',
             start_children=self.start,
             center_children=self.center,
-            end_children=Label(''),
+            end_children=self.end,
         )
         
 
