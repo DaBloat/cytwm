@@ -2,6 +2,7 @@
 @import 'style/bar.css';
 @import 'style/workspaces.css';
 @import 'style/profile.css';
+@import 'style/settings.css';
 
 * {
     all: unset;
