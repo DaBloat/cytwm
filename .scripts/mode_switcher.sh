@@ -9,6 +9,7 @@ CYNA_TERMINAL=$HOME/.config/cyna-colors/terminal
 CYNA_FABRIC=$HOME/.config/cyna-colors/fabric
 KITTY_CCONF=$HOME/.config/kitty/theme.conf
 FABRIC_CONF=$HOME/.config/fabric/style/cyna-colors.css
+FABRIC_BAR_CONF=$HOME/.config/fabric/style/bar.css
 
 TYPE=$(swww query | awk -F '/' '{print $5}')
 
@@ -60,8 +61,19 @@ change_kitty(){
 }
 
 change_fabric(){
-	local theme=$1
-	cat $CYNA_FABRIC/${1}.css > $FABRIC_CONF
+	local THEME=$1
+	cat $CYNA_FABRIC/$THEME.css > $FABRIC_CONF
+
+	if [[ $THEME == 'creme' ]] then
+		if grep -q "box-shadow" "$FABRIC_BAR_CONF"; then
+			sed -i "s/^.*box-shadow.*/	box-shadow: 4px 4px var(--foreground);/" "$FABRIC_BAR_CONF"
+		fi
+
+	elif [[ $THEME == 'coffee' ]] then
+		if grep -q "box-shadow" "$FABRIC_BAR_CONF"; then
+			sed -i "s/^.*box-shadow.*/	box-shadow: 0px 0px var(--foreground);/" "$FABRIC_BAR_CONF"
+		fi
+	fi
 }
 
 if [[ $TYPE == 'wall-dark.png' ]] then
