@@ -26,6 +26,7 @@ class StatusBar(Window):
         
         self.setting_widget = SettingsWidgets(parent=self)
         self.setting_button = Settings(widget=self.setting_widget)
+        self.setting_widget.set_pointing_to(self.setting_button)
         
         self.start = Box(
             name='start-box',

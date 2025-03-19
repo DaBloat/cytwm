@@ -35,7 +35,7 @@ class UserInfo(Box):
 class ButtonShelf(Box):
     def __init__(self):
         super().__init__(
-            name = 'button-box'
+            name = 'button-shelf'
         )
         
         self.power_button = Button(
