@@ -9,7 +9,19 @@
     color: var(--background);
 }
 
-#settings>label {
+#settings>label, #wifi-button>label, #bluetooth-button>label, #theme-button>label{
     font-size: 23px;
     font-family: 'NotoSansM Nerd Font Propo';
+}
+
+#wifi-button, #bluetooth-button, #theme-button {
+    color: var(--foreground);
+    background-color: var(--background);
+    margin: 10px;
+}
+
+#button-box {
+    margin: 0 50 0 0;
+    border: 2px solid var(--foreground);
+    background-color: var(--background);
 }
