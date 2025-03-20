@@ -5,7 +5,7 @@
 }
 
 #profile>label, #power-button>label, #reboot-button>label, #lock-button>label{
-    font-size: 23px;
+    font-size: 25px;
     font-family: 'NotoSansM Nerd Font Propo';
 }
 
