@@ -17,17 +17,21 @@ class SettingLabelBox(Box):
     def __init__(self):
         super().__init__(
             name = 'setting-label-box',
-            size = [100, 20]
+            size = [100, 20],
+            h_align = 'center'
         )
-        self.children = Label('Quick Settings', name = 'setting-label')
+        self.children = Label('Settings', name = 'setting-label')
         
 
 class WifiSettings(Button):
     def __init__(self):
         super().__init__(
-            name = 'wifi-button'
+            name = 'wifi-button',
+            size = [50, 50],
+            v_align = 'center'
         )
-        self.children = Label('󰤨')
+        self.children = Label('󰤨')     
+
         
 class BluetoothSettings(Button):
     def __init__(self):
@@ -36,28 +40,29 @@ class BluetoothSettings(Button):
         )
         self.children = Label('󰂯')
         
-class ThemeSettings(Button):
+class AudioSettings(Button):
     def __init__(self):
         super().__init__(
-            name = 'theme-button'
+            name = 'audio-button'
         )
-        self.children = Label('󰄛')
-        
+        self.children = Label('')
 
-class AppSetting(Button):
-    def __init__(self):
-        super().__init__(
-            name = 'app-setting-button'
-        )
-        self.children = Label('')
             
 class ButtonBox(Box):
     def __init__(self):
         super().__init__(
-            name = 'button-box'
+            name = 'button-box',
+            orientation = 'v'
         )
-        self.children = [WifiSettings(), BluetoothSettings(), ThemeSettings()]
-    
+        self.children = [WifiSettings(), BluetoothSettings(), AudioSettings()]
+        
+class PlaceHolderBox(Box):
+    def __init__(self):
+        super().__init__(
+            name = 'test',
+            size = [207, 170]
+        )
+        
         
 class SettingsWidgets(PopupWindow):
     def __init__(self, parent):
@@ -74,7 +79,7 @@ class SettingsWidgets(PopupWindow):
         
         self.bot_box = Box(
             name = 'bot-box',
-            children = [ButtonBox()]
+            children = [ButtonBox(), PlaceHolderBox()]
         )
         
         self.children = Box(

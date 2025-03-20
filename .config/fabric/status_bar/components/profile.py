@@ -86,7 +86,7 @@ class UptimeInfo(Box):
             self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
         elif (hour // 10) <= 0:
             self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 10px 0 10px;')
+            self.uptime.set_style('color: var(--foreground); margin: 0px 15px 0 15px;')
         else:
             self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
             self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  5px;')
