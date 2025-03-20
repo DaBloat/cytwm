@@ -9,9 +9,28 @@
     color: var(--background);
 }
 
-#settings>label, #wifi-button>label, #bluetooth-button>label, #theme-button>label{
+#settings>label, #wifi-button>label, #bluetooth-button>label, #theme-button>label, #app-setting-button {
+    font-family: 'NotoSansM Nerd Font Propo'; 
+}
+
+#top-box {
+    margin: 0 205px 0 0;
+}
+
+#setting-label-box {
+    border-radius: 12px 12px 5px 5px;
+    margin: 0 0 10px;
+    border: 2px solid var(--foreground);
+    background-color: var(--background);
+}
+
+#setting-label {
+    margin: 0 75px;
+    color: var(--foreground)
+}
+
+#wifi-button>label, #bluetooth-button>label, #theme-button>label {
     font-size: 23px;
-    font-family: 'NotoSansM Nerd Font Propo';
 }
 
 #wifi-button, #bluetooth-button, #theme-button {
@@ -21,7 +40,6 @@
 }
 
 #button-box {
-    margin: 0 50 0 0;
     border: 2px solid var(--foreground);
     background-color: var(--background);
 }
