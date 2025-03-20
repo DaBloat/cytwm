@@ -12,6 +12,15 @@ class Settings(Button):
         )
         self.children = Label('')
         
+        
+class SettingLabelBox(Box):
+    def __init__(self):
+        super().__init__(
+            name = 'setting-label-box',
+            size = [100, 20]
+        )
+        self.children = Label('Quick Settings', name = 'setting-label')
+        
 
 class WifiSettings(Button):
     def __init__(self):
@@ -33,6 +42,14 @@ class ThemeSettings(Button):
             name = 'theme-button'
         )
         self.children = Label('󰄛')
+        
+
+class AppSetting(Button):
+    def __init__(self):
+        super().__init__(
+            name = 'app-setting-button'
+        )
+        self.children = Label('')
             
 class ButtonBox(Box):
     def __init__(self):
@@ -49,4 +66,18 @@ class SettingsWidgets(PopupWindow):
             margin = '10px 10px',
             visible = False,
             all_visible = False)
-        self.children = [ButtonBox()]
+        
+        self.top_box = Box(
+            name = 'top-box',
+            children = [SettingLabelBox()]
+        )
+        
+        self.bot_box = Box(
+            name = 'bot-box',
+            children = [ButtonBox()]
+        )
+        
+        self.children = Box(
+            orientation='v',
+            children=[self.top_box, 
+                      self.bot_box])
