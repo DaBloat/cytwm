@@ -17,7 +17,7 @@ class SettingLabelBox(Box):
     def __init__(self):
         super().__init__(
             name = 'setting-label-box',
-            size = [100, 20],
+            size = [120, 20],
             h_align = 'center'
         )
         self.children = Label('Settings', name = 'setting-label')
@@ -27,49 +27,47 @@ class WifiSettings(Button):
     def __init__(self):
         super().__init__(
             name = 'wifi-button',
-            size = [125, 100],
+            size = [100, 30],
             v_align = 'center'
         )
         self.icon = Label('󰤨')
-        self.icon.set_style("font-size: 40px; font-family: 'NotoSansM Nerd Font Propo'; margin: 0 5px;")
-        self.wifi = Label('Wifi')
+        self.icon.set_style("font-size: 25px; font-family: 'NotoSansM Nerd Font Propo'; margin: 0 2px 0 0;")
+        self.label = Label('Wifi')
         # VILLAMOR_PRINT
         # VILLAMOR_5G
         # T.I.P.ian Student
         # T.I.P.ian Employee
-        self.wifi.set_style('font-size: 12px;')
+        self.label.set_style('font-size: 15px;')
         self.state = Label('On')
         self.state.set_style('font-size: 10px;')
-        self.children = Box(
-            orientation= 'v',
-            children=[self.icon, self.wifi, self.state]
-            )
+        self.children = Box(orientation = 'v',
+            children=[self.icon, self.label, self.state ])
         
-             
 
-        
 class BluetoothSettings(Button):
     def __init__(self):
         super().__init__(
-            name = 'bluetooth-button'
+            name = 'bluetooth-button',
+            size = [100, 30],
+            v_align = 'center'
         )
-        self.children = Label('󰂯')
-        
-class AudioSettings(Button):
-    def __init__(self):
-        super().__init__(
-            name = 'audio-button'
-        )
-        self.children = Label('')
+        self.icon = Label('󰂯')
+        self.icon.set_style("font-size: 25px; font-family: 'NotoSansM Nerd Font Propo'; margin: 0 2px 0 0;")
+        self.label = Label('Bluetooth')
+        self.label.set_style('font-size: 15px;')
+        self.state = Label('On')
+        self.state.set_style('font-size: 10px;')
+        self.children = Box(orientation = 'v',
+            children=[self.icon, self.label, self.state ])
+            
 
             
 class ButtonBox(Box):
     def __init__(self):
         super().__init__(
             name = 'button-box',
-            orientation = 'v'
         )
-        self.children = [WifiSettings()]
+        self.children = [WifiSettings(), BluetoothSettings()]
         
 class PlaceHolderBox(Box):
     def __init__(self):
