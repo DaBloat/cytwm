@@ -10,7 +10,7 @@ class Settings(Button):
             name = 'settings',
             on_clicked = lambda *_ : widget.show() if not widget.is_visible() else widget.hide()
         )
-        self.children = Label('')
+        self.children = [Label('')]
         
         
 class SettingLabelBox(Box):
@@ -27,10 +27,25 @@ class WifiSettings(Button):
     def __init__(self):
         super().__init__(
             name = 'wifi-button',
-            size = [50, 50],
+            size = [125, 100],
             v_align = 'center'
         )
-        self.children = Label('󰤨')     
+        self.icon = Label('󰤨')
+        self.icon.set_style("font-size: 40px; font-family: 'NotoSansM Nerd Font Propo'; margin: 0 5px;")
+        self.wifi = Label('Wifi')
+        # VILLAMOR_PRINT
+        # VILLAMOR_5G
+        # T.I.P.ian Student
+        # T.I.P.ian Employee
+        self.wifi.set_style('font-size: 12px;')
+        self.state = Label('On')
+        self.state.set_style('font-size: 10px;')
+        self.children = Box(
+            orientation= 'v',
+            children=[self.icon, self.wifi, self.state]
+            )
+        
+             
 
         
 class BluetoothSettings(Button):
@@ -54,7 +69,7 @@ class ButtonBox(Box):
             name = 'button-box',
             orientation = 'v'
         )
-        self.children = [WifiSettings(), BluetoothSettings(), AudioSettings()]
+        self.children = [WifiSettings()]
         
 class PlaceHolderBox(Box):
     def __init__(self):
@@ -79,7 +94,7 @@ class SettingsWidgets(PopupWindow):
         
         self.bot_box = Box(
             name = 'bot-box',
-            children = [ButtonBox(), PlaceHolderBox()]
+            children = [ButtonBox()]
         )
         
         self.children = Box(
