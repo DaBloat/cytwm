@@ -37,7 +37,7 @@
     font-size: 30px;
 }
 
-#wifi-button, #bluetooth-button, #audio-button {
+#wifi-button, #bluetooth-button{
     border-radius: 5px;
     color: var(--foreground);
     border: 2px solid var(--foreground);
@@ -50,15 +50,11 @@
 }
 
 #wifi-button {
-    margin: 0 0 5px 0;
+    margin: 0 5px 0px 0;
 }
 
 #bluetooth-button {
-    margin: 5px 0 5px 0;
-}
-
-#audio-button {
-    margin: 5px 0 0 0;
+    margin: 0px 0 0px 5px;
 }
 
 #test {
