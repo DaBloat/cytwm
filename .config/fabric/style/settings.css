@@ -1,7 +1,7 @@
 #settings {
     color: var(--foreground);
     margin: 3px 0px;
-    padding: 3px 6px;
+    padding: 3px 8px;
 }
 
 #settings:hover {
@@ -13,8 +13,12 @@
     font-family: 'NotoSansM Nerd Font Propo'; 
 }
 
+#settings>label {
+    font-size: 25px;
+}
+
 #top-box {
-    margin: 0 205px 0 0;
+    margin: 0 200px 0 0;
 }
 
 #setting-label-box {
@@ -30,7 +34,7 @@
 }
 
 #wifi-button>label, #bluetooth-button>label, #audio-button>label {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 #wifi-button, #bluetooth-button, #audio-button {

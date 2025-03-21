@@ -1,7 +1,7 @@
 #profile {
     color: var(--foreground);
     margin: 3px 0px;
-    padding: 3px 6px;
+    padding: 3px 8px;
 }
 
 #profile>label, #power-button>label, #reboot-button>label, #lock-button>label{
