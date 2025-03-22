@@ -18,7 +18,7 @@
 }
 
 #top-box {
-    margin: 0 200px 0 0;
+    margin: 0 225px 0 0;
 }
 
 #setting-label-box {
@@ -29,7 +29,7 @@
 }
 
 #setting-label {
-    margin: 0 100px;
+    margin: 0 115px;
     color: var(--foreground)
 }
 
@@ -37,7 +37,7 @@
     font-size: 30px;
 }
 
-#wifi-button, #bluetooth-button{
+#wifi-button, #bluetooth-button, #audio-button{
     border-radius: 5px;
     color: var(--foreground);
     border: 2px solid var(--foreground);
@@ -54,8 +54,13 @@
 }
 
 #bluetooth-button {
+    margin: 0px 5px 0px 5px;
+}
+
+#audio-button {
     margin: 0px 0 0px 5px;
 }
+
 
 #test {
     border-radius: 5px;
