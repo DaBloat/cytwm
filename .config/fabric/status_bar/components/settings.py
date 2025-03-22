@@ -59,6 +59,22 @@ class BluetoothSettings(Button):
         self.state.set_style('font-size: 10px;')
         self.children = Box(orientation = 'v',
             children=[self.icon, self.label, self.state ])
+        
+class AudioSettings(Button):
+    def __init__(self):
+        super().__init__(
+            name = 'audio-button',
+            size = [100, 30],
+            v_align = 'center'
+        )
+        self.icon = Label('')
+        self.icon.set_style("font-size: 25px; font-family: 'NotoSansM Nerd Font Propo'; margin: 0 2px 0 0;")
+        self.label = Label('Audio')
+        self.label.set_style('font-size: 15px;')
+        self.state = Label('On')
+        self.state.set_style('font-size: 10px;')
+        self.children = Box(orientation = 'v',
+            children=[self.icon, self.label, self.state ])
             
 
             
@@ -67,7 +83,7 @@ class ButtonBox(Box):
         super().__init__(
             name = 'button-box',
         )
-        self.children = [WifiSettings(), BluetoothSettings()]
+        self.children = [WifiSettings(), BluetoothSettings(), AudioSettings()]
         
 class PlaceHolderBox(Box):
     def __init__(self):
