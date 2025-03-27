@@ -134,16 +134,20 @@ class ProfileWidgets(PopupWindow):
             margin='10px 0px',
             visible = False,
             all_visible = False)
-        self.left_side = Box(
+        self.top_left_side = Box(
             orientation = 'v',
             children = [UserInfo()]
         )
-        self.right_side = Box(
+        self.top_right_side = Box(
             orientation='v',
             align='start',
             children=[UptimeInfo(), ButtonShelf(), PacmanPackages()]
         )
+        
+        self.top_box = Box(
+            children = [self.top_left_side, self.top_right_side]
+        )
 
         self.children = Box(
-                children=[self.left_side, self.right_side]
+                children=[self.top_box]
         )

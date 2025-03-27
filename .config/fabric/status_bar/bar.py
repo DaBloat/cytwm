@@ -12,8 +12,9 @@ class StatusBar(Window):
     def __init__(self):
         super().__init__(
             monitor = 0,
+            
             name = 'status-bar',
-            layer = "bottom",
+            layer = "top",
             exclusivity= "auto",
             anchor = "left top right",
             margin = '10px -5px 0px 12px',
