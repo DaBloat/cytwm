@@ -20,3 +20,40 @@ class SettingsWidgets(PopupWindow):
             margin = '10px 10px',
             visible = False,
             all_visible = False)
+        self.children = [TopBox()]
+        
+        
+class TopBox(Box):
+    def __init__(self):
+        super().__init__(
+            name='top-box'
+        )
+        
+        self.change_theme = Button(
+            name = 'change-theme-button',
+            child = Label('󰄛')
+        )
+        
+        self.screen_record = Button(
+            name = 'screen-record-button',
+            child = Label(''),
+        )
+        
+        self.screen_shot = Button(
+            name = 'screen-shot-button',
+            child = Label('')
+        )
+        
+        self.set_button = Button(
+            name = 'set-button',
+            child = Label('')
+        )
+              
+        
+        self.children = [self.change_theme,
+                         self.screen_record,
+                         self.screen_shot,
+                         self.set_button]
+        
+
+
