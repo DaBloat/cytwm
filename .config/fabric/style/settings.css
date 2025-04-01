@@ -9,10 +9,9 @@
     color: var(--background);
 }
 
-#settings>label {
+#settings>label, #change-theme-button>label, #screen-record-button>label, #screen-shot-button>label, #set-button>label{
     font-size: 25px;
     font-family: 'NotoSansM Nerd Font Propo'; 
 }
-
 
 
