@@ -23,10 +23,12 @@ class SettingsWidgets(PopupWindow):
         self.children = [TopBox()]
         
         
+        
 class TopBox(Box):
     def __init__(self):
         super().__init__(
-            name='top-box'
+            name='top-box',
+            spacing = 5
         )
         
         self.change_theme = Button(
@@ -44,6 +46,11 @@ class TopBox(Box):
             child = Label('')
         )
         
+        self.game_mode = Button(
+            name = 'game-mode-button',
+            child = Label('󰊗')
+        )
+        
         self.set_button = Button(
             name = 'set-button',
             child = Label('')
@@ -53,6 +60,7 @@ class TopBox(Box):
         self.children = [self.change_theme,
                          self.screen_record,
                          self.screen_shot,
+                         self.game_mode,
                          self.set_button]
         
 

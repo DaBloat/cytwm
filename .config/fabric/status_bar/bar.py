@@ -14,7 +14,7 @@ class StatusBar(Window):
             monitor = 0,
             
             name = 'status-bar',
-            layer = "top",
+            layer = "bottom",
             exclusivity= "auto",
             anchor = "left top right",
             margin = '10px -5px 0px 12px',
