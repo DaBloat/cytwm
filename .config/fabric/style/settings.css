@@ -9,9 +9,19 @@
     color: var(--background);
 }
 
-#settings>label, #change-theme-button>label, #screen-record-button>label, #screen-shot-button>label, #set-button>label{
+#settings>label, #change-theme-button>label, #screen-record-button>label, #screen-shot-button>label, #game-mode-button>label, #set-button>label{
     font-size: 25px;
     font-family: 'NotoSansM Nerd Font Propo'; 
 }
 
+#top-box {
+    margin: 0 175px 0 0;
+}
+
+#change-theme-button, #screen-record-button, #screen-shot-button, #game-mode-button, #set-button {
+    background-color: var(--background);
+    color: var(--foreground);
+    border: solid 2px var(--foreground);
+    padding: 3px 10px;
+}
 
