@@ -14,13 +14,29 @@
     background-color: var(--foreground);
 }
 
+#power-button, #reboot-button, #lock-button {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+}
+
+#power-button {
+    color: var(--red);
+}
+
+#reboot-button {
+    color : var(--yellow);
+}
+
+#lock-button {
+    color : var(--blue);
+}
+
 #pfp {
     border: solid 1.5px var(--foreground);
     margin: 10px 30px 5px;
 }
 
 #whoami {
-    margin: 0 10px 0 0px;
     background-color: var(--background);
     border: solid 2px var(--foreground);
 }
@@ -35,51 +51,4 @@
     font-size: 12px; 
     color: var(--foreground);
     font-family: 'Itim';
-}
-
-#uptime-box {
-    border-radius: 12px 12px 5px 5px;
-    margin: 0 10px 0 0px;
-    background-color: var(--background);
-    border: solid 2px var(--foreground);
-}
-
-#uptime-label {
-    margin: 0 0px 0 5px;
-    font-size: 12px; 
-    color: var(--foreground);
-    font-family: 'Itim';
-}
-
-#button-shelf {
-    margin: 10px 10px 10px 0px;
-}
-
-#power-button, #reboot-button, #lock-button {
-    border-radius: 5px;
-    padding: 0 15px;
-    background-color: var(--background);
-    color: var(--foreground);
-    border: solid 2px var(--foreground);
-}
-
-#reboot-button {
-    margin: 0 10px;
-}
-
-#pacman-box{
-    border-radius: 5px 5px 12px 12px;
-    margin: 0 10px 0 0px;
-    background-color: var(--background);
-    border: solid 2px var(--foreground);
-}
-
-#pacman-packages {
-    color: var(--foreground);
-    margin: 0px 50px;
-}
-
-#packages-logo{
-    margin: 0 5px 0;
-    font-family: 'NotoSansM Nerd Font Propo';
 }
