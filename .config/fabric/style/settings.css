@@ -14,8 +14,8 @@
     font-family: 'NotoSansM Nerd Font Propo'; 
 }
 
-#top-box {
-    margin: 0 175px 0 0;
+#setting-widget {
+margin: 0 175px 0 0;
 }
 
 #change-theme-button, #screen-record-button, #screen-shot-button, #game-mode-button, #set-button {
@@ -25,3 +25,12 @@
     padding: 3px 10px;
 }
 
+#slider-box {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+}
+
+#sample-scale {
+    background-color: var(--red);
+    padding: 10px;
+}
