@@ -35,7 +35,8 @@ class UserInfo(Box):
 class ButtonShelf(Box):
     def __init__(self):
         super().__init__(
-            name = 'button-shelf'
+            name = 'button-shelf',
+            spacing = 10
         )
         
         self.power_button = Button(
@@ -107,24 +108,6 @@ class UptimeInfo(Box):
             return f'{min} min'
         else:
             return ''
-        
-        
-class PacmanPackages(Box):
-    def __init__(self):
-        super().__init__(
-            name = 'pacman-box',
-            size = [100, 15]
-        )
-        
-        self.pacman_packages = Box(
-            name='pacman-packages',
-            children= [
-                Label('󰏖', name='packages-logo'),
-                Label(f"{subprocess.check_output('sudo pacman -Q | wc -l', shell=True)}".split("'")[1].strip('\\n'), name='packages-label')
-            ]
-        )
-        
-        self.children = [self.pacman_packages]
     
         
 class ProfileWidgets(PopupWindow):
@@ -141,10 +124,12 @@ class ProfileWidgets(PopupWindow):
         self.top_right_side = Box(
             orientation='v',
             align='start',
-            children=[UptimeInfo(), ButtonShelf(), PacmanPackages()]
+            spacing = 5,
+            children=[ButtonShelf()]
         )
         
         self.top_box = Box(
+            spacing = 10,
             children = [self.top_left_side, self.top_right_side]
         )
 
