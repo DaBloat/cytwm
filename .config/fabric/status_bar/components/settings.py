@@ -1,6 +1,7 @@
 from fabric.widgets.button import Button
 from fabric.widgets.label import Label
 from fabric.widgets.box import Box
+from fabric.widgets.scale import Scale, ScaleMark
 from status_bar.components.misc import PopupWindow
 
 
@@ -20,7 +21,12 @@ class SettingsWidgets(PopupWindow):
             margin = '10px 10px',
             visible = False,
             all_visible = False)
-        self.children = [TopBox()]
+        self.children = Box(
+                        name = 'setting-widget',
+                        spacing = 5,
+                        orientation='v',
+                        children=[TopBox(),
+                         Sliders()])
         
         
         
@@ -63,5 +69,18 @@ class TopBox(Box):
                          self.game_mode,
                          self.set_button]
         
+
+class Sliders(Box):
+    def __init__(self):
+        super().__init__(
+            name = "slider-box"
+        )
+        
+        self.children = [
+
+        ]
+
+
+
 
 
