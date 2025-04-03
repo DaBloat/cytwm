@@ -2,6 +2,7 @@ from status_bar.components.misc import PopupWindow
 from fabric.widgets.button import Button
 from fabric.widgets.box import Box
 from fabric.widgets.label import Label
+from fabric.widgets.circularprogressbar import CircularProgressBar 
 from status_bar.components.misc import RoundedImage
 from fabric.utils import get_relative_path, invoke_repeater
 from status_bar.core import commands
@@ -110,6 +111,18 @@ class HardwareInfo(Box):
         super().__init__(
             name = 'hardware-info',
         )
+        
+        self.progress_bar = CircularProgressBar(
+            name = "trial-progress-bar",
+            pie = False,
+            size = 50
+        )
+        
+        self.progress_bar.value = 10 / 100
+
+        self.children = [
+            self.progress_bar
+        ]
 
     
 class ProfileWidgets(PopupWindow):
