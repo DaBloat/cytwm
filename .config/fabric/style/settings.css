@@ -25,6 +25,11 @@ margin: 0 175px 0 0;
     padding: 3px 10px;
 }
 
+#change-theme-button:hover, #screen-record-button:hover, #screen-shot-button:hover, #game-mode-button:hover, #set-button:hover{
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
 #slider-box {
     background-color: var(--background);
     border: solid 2px var(--foreground);

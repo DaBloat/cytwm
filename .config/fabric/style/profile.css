@@ -4,7 +4,7 @@
     padding: 3px 8px;
 }
 
-#profile>label, #power-button>label, #reboot-button>label, #lock-button>label{
+#profile>label, #power-button>label, #reboot-button>label, #lock-button>label, #uptime-logo{
     font-size: 25px;
     font-family: 'NotoSansM Nerd Font Propo';
 }
@@ -33,7 +33,7 @@
 
 #pfp {
     border: solid 1.5px var(--foreground);
-    margin: 10px 30px 5px;
+    margin: 8px 30px 5px;
 }
 
 #whoami {
@@ -51,4 +51,15 @@
     font-size: 12px; 
     color: var(--foreground);
     font-family: 'Itim';
+}
+
+#uptime-info {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+    padding: 10px 0px;
+}
+
+#uptime-logo {
+    margin: 0 20px;
+    color: var(--green);
 }
