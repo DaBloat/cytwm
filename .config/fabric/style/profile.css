@@ -69,3 +69,8 @@
     border: solid 2px var(--foreground);
     padding: 50px 0px;
 }
+
+#trial-progress-bar {
+    color: var(--foreground);
+    border: solid 10px var(--blue)
+}
