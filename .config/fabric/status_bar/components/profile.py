@@ -4,7 +4,8 @@ from fabric.widgets.box import Box
 from fabric.widgets.label import Label
 from status_bar.components.misc import RoundedImage
 from fabric.utils import get_relative_path, invoke_repeater
-import getpass, socket, os, psutil, time, subprocess
+from status_bar.core import commands
+import getpass, socket, os, psutil, time
 
 
 class Profile(Button):
@@ -30,7 +31,36 @@ class UserInfo(Box):
         self.children = [self.pfp, 
                         Label(f'{str(getpass.getuser()).capitalize()}', name='user'),
                         Label(f'{socket.gethostname()}', name='hostname')]
+        
+class PowerButton(Button):
+    def __init__(self):
+        super().__init__(
+            name = 'power-button',
+            size = [50, 50],
+            on_clicked = commands.power_off(),
+            child = Label('')
+        )
 
+
+class RebootButton(Button):
+    def __init__(self):
+        super().__init__(
+            name = 'reboot-button',
+            size = [50, 50],
+            on_clicked = commands.reboot(),
+            child = Label('󰜉')
+        )
+        
+        
+class LockButton(Button):
+    def __init__(self):
+        super().__init__(
+            name = 'lock-button',
+            size = [50, 50],
+            on_clicked = commands.lock_system(),
+            child = Label('')
+        )
+        
         
 class ButtonShelf(Box):
     def __init__(self):
@@ -38,78 +68,40 @@ class ButtonShelf(Box):
             name = 'button-shelf',
             spacing = 10
         )
-        
-        self.power_button = Button(
-            name='power-button',
-            child = Label(''),
-            size = [50, 50],
-            on_clicked = lambda x : os.system('sudo systemctl poweroff')
-            )
-        
-        self.reboot_button = Button(
-            name='reboot-button',
-            child = Label('󰜉'),
-            size = [50, 50],
-            on_clicked = lambda x : os.system('sudo systemctl reboot')
-        )
-        
-        self.lock_button = Button(
-            name='lock-button',
-            child = Label(''),
-            size = [50, 50],
-            on_clicked = lambda x : print('still in progress!')
-        )
-        
-        self.children = [self.lock_button, self.reboot_button, self.power_button]
+        self.children = [LockButton(), RebootButton(), PowerButton()]
         
         
 class UptimeInfo(Box):
     def __init__(self):
         super().__init__(
-            name='uptime-box'
+            name='uptime-info',
         )
-        self.uptime = Label()
-        self.children=[ Label('Up: ', name='uptime-label'), self.uptime]
-        invoke_repeater(1000, self.uptime_update)
-           
-    def uptime_update(self):
-        uptime = str((time.time() - psutil.boot_time()) / 3600).split('.')
-        hour = int(uptime[0])
-        minute = int(float('.'+uptime[1]) * 60)
-        if hour == 0 and minute == 0:
-            self.uptime.set_label("< 1 min")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
-        elif hour == 0 and minute > 0:  
-            self.uptime.set_label(f"{self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
-        elif hour > 0 and minute == 0:
-            self.uptime.set_label(f"{self.hour_(hour)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 40px;')
-        elif (hour // 10) <= 0:
-            self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 10px 0 10px;')
+        self.logo = Label('', name = 'uptime-logo')
+        self.top = Label('10 hours', style='font-size: 16px')
+        self.bot = Label('47 minutes', style='font-size: 16px')
+        self.uptime = Box(
+            orientation = 'v',
+            h_align = 'center',
+            v_align = 'center',
+            children = [self.top, self.bot]
+        )
+        self.children = [self.logo, self.uptime]
+        invoke_repeater(1000, self.update_labels)
+        
+    def update_labels(self):
+        [hour, minute, seconds] = commands.update_uptime()
+        s_strs = lambda val, tim: f" {tim}" if val <= 1 else f" {tim}s"
+        if int(hour) == 0:
+            self.top.set_label(minute + s_strs(int(minute), "minute"))
+            self.bot.set_label(seconds + s_strs(int(seconds), "second"))
         else:
-            self.uptime.set_label(f"{self.hour_(hour)}, {self.mins_(minute)}")
-            self.uptime.set_style('color: var(--foreground); margin: 0px 0 0  5px;')
+            self.top.set_label(hour + s_strs(int(hour), "hour"))
+            self.bot.set_label(minute + s_strs(int(minute), "minute"))
+        self.top.set_style('font-size: 16px; color: var(--foreground);')
+        self.bot.set_style('font-size: 16px; color: var(--foreground);')
         return True
+
     
-    def hour_(self, hr):
-        if hr > 1:
-            return f'{hr} hours'
-        elif hr == 1:
-            return f'{hr} hour'
-        else:
-            return ''
-        
-    def mins_(self, min):
-        if min > 1:
-            return f'{min} mins'
-        elif min == 1:
-            return f'{min} min'
-        else:
-            return ''
-    
-        
 class ProfileWidgets(PopupWindow):
     def __init__(self, parent):
         super().__init__(
@@ -124,8 +116,8 @@ class ProfileWidgets(PopupWindow):
         self.top_right_side = Box(
             orientation='v',
             align='start',
-            spacing = 5,
-            children=[ButtonShelf()]
+            spacing = 10,
+            children=[ButtonShelf(), UptimeInfo()]
         )
         
         self.top_box = Box(
