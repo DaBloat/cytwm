@@ -5,10 +5,10 @@ from time import time, sleep
 from os import system
 
 
-def get_user(self):
+def get_user():
     return str(getuser()).capitalize()
     
-def get_hostname(self):
+def get_hostname():
     return str(gethostname())
     
 def get_uptime(self):

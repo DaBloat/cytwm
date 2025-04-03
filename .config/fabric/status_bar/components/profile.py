@@ -29,8 +29,8 @@ class UserInfo(Box):
                         get_relative_path('profile.png'),
                         size = [60, 60]))
         self.children = [self.pfp, 
-                        Label(f'{str(getpass.getuser()).capitalize()}', name='user'),
-                        Label(f'{socket.gethostname()}', name='hostname')]
+                        Label(commands.get_user(), name='user'),
+                        Label(commands.get_hostname(), name='hostname')]
         
 class PowerButton(Button):
     def __init__(self):
@@ -77,8 +77,8 @@ class UptimeInfo(Box):
             name='uptime-info',
         )
         self.logo = Label('', name = 'uptime-logo')
-        self.top = Label('10 hours', style='font-size: 16px')
-        self.bot = Label('47 minutes', style='font-size: 16px')
+        self.top = Label()
+        self.bot = Label()
         self.uptime = Box(
             orientation = 'v',
             h_align = 'center',
