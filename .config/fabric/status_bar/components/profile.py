@@ -94,12 +94,22 @@ class UptimeInfo(Box):
         if int(hour) == 0:
             self.top.set_label(minute + s_strs(int(minute), "minute"))
             self.bot.set_label(seconds + s_strs(int(seconds), "second"))
+        elif int(minute) == 0:
+            self.top.set_label(hour + s_strs(int(hour), "hour"))
+            self.bot.set_label(seconds + s_strs(int(seconds), "second"))
         else:
             self.top.set_label(hour + s_strs(int(hour), "hour"))
             self.bot.set_label(minute + s_strs(int(minute), "minute"))
         self.top.set_style('font-size: 16px; color: var(--foreground);')
         self.bot.set_style('font-size: 16px; color: var(--foreground);')
         return True
+    
+    
+class HardwareInfo(Box):
+    def __init__(self):
+        super().__init__(
+            name = 'hardware-info',
+        )
 
     
 class ProfileWidgets(PopupWindow):
@@ -124,7 +134,10 @@ class ProfileWidgets(PopupWindow):
             spacing = 10,
             children = [self.top_left_side, self.top_right_side]
         )
+        
 
         self.children = Box(
-                children=[self.top_box]
+            orientation= 'v',
+            spacing = 10,
+            children=[self.top_box, HardwareInfo()]
         )
