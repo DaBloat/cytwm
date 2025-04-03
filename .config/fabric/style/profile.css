@@ -67,7 +67,7 @@
 #hardware-info {
     background-color: var(--background);
     border: solid 2px var(--foreground);
-    padding: 50px 0px;
+    padding: 5px 35px;
 }
 
 #trial-progress-bar {

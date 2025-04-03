@@ -110,6 +110,9 @@ class HardwareInfo(Box):
     def __init__(self):
         super().__init__(
             name = 'hardware-info',
+            spacing = 10,
+            h_align = 'center',
+            h_expand = True
         )
         
         self.progress_bar = CircularProgressBar(
@@ -118,10 +121,35 @@ class HardwareInfo(Box):
             size = 50
         )
         
+        self.progress_bar1 = CircularProgressBar(
+            name = "trial-progress-bar",
+            pie = False,
+            size = 50
+        )
+                
+        self.progress_bar2 = CircularProgressBar(
+            name = "trial-progress-bar",
+            pie = False,
+            size = 50
+        )
+        
+        self.progress_bar3 = CircularProgressBar(
+            name = "trial-progress-bar",
+            pie = False,
+            size = 50
+        )
+                
+        
         self.progress_bar.value = 10 / 100
+        self.progress_bar1.value = 20 / 100
+        self.progress_bar2.value= 30 / 100
+        self.progress_bar3.value= 40 / 100
 
         self.children = [
-            self.progress_bar
+            self.progress_bar,
+            self.progress_bar1,
+            self.progress_bar2,
+            self.progress_bar3
         ]
 
     
