@@ -1,13 +1,13 @@
 :vars {
-	--background: #331e12;
-	--foreground: #d4baa4;
-    --black: #1e1e1e;
-    --red: #d26b34;
-    --green: #4c8c8a;
-    --yellow: #e1c16e;
-    --blue: #4a76a8;
-    --magenta: #9b5b72;
-    --cyan: #a3c9b8;
-    --white: #d1b18d;
+	--background: #d4baa4;
+	--foreground: #331e12;
+    --black: #2e2e2e;
+    --red: #9c4a3a;
+    --green: #6a7f4d;
+    --yellow: #c4a514;
+    --blue: #4b6a85;
+    --magenta: #7d4a73;
+    --cyan: #4b9a8b;
+    --white: #f4e1c1;
 	--gray: #5c5c5c;
 }

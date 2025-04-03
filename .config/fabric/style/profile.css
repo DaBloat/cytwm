@@ -63,3 +63,9 @@
     margin: 0 20px;
     color: var(--green);
 }
+
+#hardware-info {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+    padding: 50px 0px;
+}
