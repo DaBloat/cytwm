@@ -72,5 +72,5 @@
 
 #trial-progress-bar {
     color: var(--foreground);
-    border: solid 10px var(--blue)
+    border: solid 8px var(--blue)
 }
