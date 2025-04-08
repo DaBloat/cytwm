@@ -115,43 +115,18 @@ class HardwareInfo(Box):
             h_expand = True
         )
         
-        self.progress_bar = CircularProgressBar(
-            name = "trial-progress-bar",
-            pie = False,
-            size = 50
-        )
+        self.progress = CircularProgressBar(
+            name = 'trial-progress-bar',
+            size = 35,
+            pie = True)
         
-        self.progress_bar1 = CircularProgressBar(
-            name = "trial-progress-bar",
-            pie = False,
-            size = 50
-        )
-                
-        self.progress_bar2 = CircularProgressBar(
-            name = "trial-progress-bar",
-            pie = False,
-            size = 50
-        )
+        self.progress.value = 50 / 100
         
-        self.progress_bar3 = CircularProgressBar(
-            name = "trial-progress-bar",
-            pie = False,
-            size = 50
-        )
-                
+        self.children = [self.progress]
         
-        self.progress_bar.value = 10 / 100
-        self.progress_bar1.value = 20 / 100
-        self.progress_bar2.value= 30 / 100
-        self.progress_bar3.value= 40 / 100
-
-        self.children = [
-            self.progress_bar,
-            self.progress_bar1,
-            self.progress_bar2,
-            self.progress_bar3
-        ]
-
+class CPUBar(CircularProgressBar):
+    def __init__(self):
+        super().__init__()
     
 class ProfileWidgets(PopupWindow):
     def __init__(self, parent):
@@ -160,6 +135,7 @@ class ProfileWidgets(PopupWindow):
             margin='10px 0px',
             visible = False,
             all_visible = False)
+        
         self.top_left_side = Box(
             orientation = 'v',
             children = [UserInfo()]
@@ -176,9 +152,22 @@ class ProfileWidgets(PopupWindow):
             children = [self.top_left_side, self.top_right_side]
         )
         
+        self.bot_right_box = Box(
+            children = [HardwareInfo()]
+        )
+        
+        self.bot_left_box = Box(
+            
+        )
+        
+        self.bot_box = Box(
+            spacing = 10,
+            children = [self.bot_right_box, self.bot_left_box]
+        )
+        
 
         self.children = Box(
             orientation= 'v',
             spacing = 10,
-            children=[self.top_box, HardwareInfo()]
+            children=[self.top_box, self.bot_box]
         )
