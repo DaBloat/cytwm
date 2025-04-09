@@ -67,10 +67,24 @@
 #hardware-info {
     background-color: var(--background);
     border: solid 2px var(--foreground);
-    padding: 5px 35px;
 }
 
-#trial-progress-bar {
+#cpu-progress-bar {
     color: var(--foreground);
-    border: solid 10px var(--blue)
+    border: solid 7px var(--magenta)
+}
+
+#mem-progress-bar {
+    color: var(--foreground);
+    border: solid 7px var(--green)
+}
+
+#disk-progress-bar {
+    color: var(--foreground);
+    border: solid 7px var(--blue)
+}
+
+#gpu-progress-bar {
+    color: var(--foreground);
+    border: solid 7px alpha(var(--red), 0.6)
 }
