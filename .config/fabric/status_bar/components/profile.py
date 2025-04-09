@@ -2,7 +2,8 @@ from status_bar.components.misc import PopupWindow
 from fabric.widgets.button import Button
 from fabric.widgets.box import Box
 from fabric.widgets.label import Label
-from fabric.widgets.circularprogressbar import CircularProgressBar 
+from fabric.widgets.circularprogressbar import CircularProgressBar
+from fabric.widgets.overlay import Overlay
 from status_bar.components.misc import RoundedImage
 from fabric.utils import get_relative_path, invoke_repeater
 from status_bar.core import commands
@@ -110,23 +111,109 @@ class HardwareInfo(Box):
     def __init__(self):
         super().__init__(
             name = 'hardware-info',
-            spacing = 10,
             h_align = 'center',
             h_expand = True
         )
         
-        self.progress = CircularProgressBar(
-            name = 'trial-progress-bar',
-            size = 35,
-            pie = True)
+        self.children = Box(spacing = 10, 
+                            style='margin: 5px 10px;',
+                            children=[CPUBar(), MemoryBar(), DiskBar(), GPUBar()])
         
-        self.progress.value = 50 / 100
-        
-        self.children = [self.progress]
-        
-class CPUBar(CircularProgressBar):
+class CPUBar(Box):
     def __init__(self):
-        super().__init__()
+        super().__init__(
+            orientation='v'
+        )
+        self.cpu = CircularProgressBar(
+            name = 'cpu-progress-bar',
+            pie = False,
+            size = 42
+        )
+        self.cpu_progress = Overlay(
+            child = self.cpu,
+            overlays = [Label("", style="font-size: 20px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+        )
+        self.label = Label('CPU', style= "font-size: 10px; color: var(--foreground)")
+        self.children = [self.cpu_progress, self.label]
+        invoke_repeater(1000, self.update_percent)
+        
+        
+    def update_percent(self):
+        self.cpu.value = commands.get_cpu_usage()
+        return True
+    
+
+class MemoryBar(Box):
+    def __init__(self):
+        super().__init__(
+            orientation='v'
+        )
+        self.mem = CircularProgressBar(
+            name = 'mem-progress-bar',
+            pie = False,
+            size = 42
+        )
+        self.mem_progress = Overlay(
+            child = self.mem,
+            overlays = [Label("", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+        )
+        self.label = Label('MEMORY', style= "font-size: 10px; color: var(--foreground)")
+        self.children = [self.mem_progress, self.label]
+        invoke_repeater(1000, self.update_percent)
+        
+        
+    def update_percent(self):
+        self.mem.value = commands.get_mem_usage()
+        return True
+    
+    
+class DiskBar(Box):
+    def __init__(self):
+        super().__init__(
+            orientation='v'
+        )
+        self.disk = CircularProgressBar(
+            name = 'disk-progress-bar',
+            pie = False,
+            size = 42
+        )
+        self.disk_progress = Overlay(
+            child = self.disk,
+            overlays = [Label("󰋊", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+        )
+        self.label = Label('DISK', style= "font-size: 10px; color: var(--foreground)")
+        self.children = [self.disk_progress, self.label]
+        invoke_repeater(1000, self.update_percent)
+        
+        
+    def update_percent(self):
+        self.disk.value = commands.get_disk_usage()
+        return True
+    
+
+class GPUBar(Box):
+    def __init__(self):
+        super().__init__(
+            orientation='v'
+        )
+        self.gpu = CircularProgressBar(
+            name = 'gpu-progress-bar',
+            pie = False,
+            size = 42
+        )
+        self.gpu_progress = Overlay(
+            child = self.gpu,
+            overlays = [Label("󰆨", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+        )
+        self.label = Label('GPU', style= "font-size: 10px; color: var(--foreground)")
+        self.children = [self.gpu_progress, self.label]
+        invoke_repeater(1000, self.update_percent)
+        
+        
+    def update_percent(self):
+        self.gpu.value = commands.get_gpu_utilization()
+        return True
+    
     
 class ProfileWidgets(PopupWindow):
     def __init__(self, parent):

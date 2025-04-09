@@ -25,8 +25,7 @@ class SettingsWidgets(PopupWindow):
                         name = 'setting-widget',
                         spacing = 5,
                         orientation='v',
-                        children=[TopBox(),
-                         Sliders()])
+                        children=[TopBox(),Sliders()])
         
         
         
