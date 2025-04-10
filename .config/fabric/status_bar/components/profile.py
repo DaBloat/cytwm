@@ -131,9 +131,9 @@ class CPUBar(Box):
         )
         self.cpu_progress = Overlay(
             child = self.cpu,
-            overlays = [Label("", style="font-size: 20px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+            overlays = [Label("", name = 'cpu-logo')]
         )
-        self.label = Label('CPU', style= "font-size: 10px; color: var(--foreground)")
+        self.label = Label('CPU', name = 'cpu-label')
         self.children = [self.cpu_progress, self.label]
         invoke_repeater(1000, self.update_percent)
         
@@ -155,9 +155,9 @@ class MemoryBar(Box):
         )
         self.mem_progress = Overlay(
             child = self.mem,
-            overlays = [Label("", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+            overlays = [Label("", name = 'mem-logo')]
         )
-        self.label = Label('MEMORY', style= "font-size: 10px; color: var(--foreground)")
+        self.label = Label('MEMORY', name = 'mem-label')
         self.children = [self.mem_progress, self.label]
         invoke_repeater(1000, self.update_percent)
         
@@ -179,9 +179,9 @@ class DiskBar(Box):
         )
         self.disk_progress = Overlay(
             child = self.disk,
-            overlays = [Label("󰋊", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+            overlays = [Label("󰋊", name = 'disk-logo')]
         )
-        self.label = Label('DISK', style= "font-size: 10px; color: var(--foreground)")
+        self.label = Label('DISK', name = 'disk-label')
         self.children = [self.disk_progress, self.label]
         invoke_repeater(1000, self.update_percent)
         
@@ -203,9 +203,9 @@ class GPUBar(Box):
         )
         self.gpu_progress = Overlay(
             child = self.gpu,
-            overlays = [Label("󰆨", style="font-size: 15px; font-family: 'NotoSansM Nerd Font Propo'; color: var(--foreground)")]
+            overlays = [Label("󰆨", name = 'gpu-logo')]
         )
-        self.label = Label('GPU', style= "font-size: 10px; color: var(--foreground)")
+        self.label = Label('GPU', name = 'gpu-label')
         self.children = [self.gpu_progress, self.label]
         invoke_repeater(1000, self.update_percent)
         
@@ -213,6 +213,14 @@ class GPUBar(Box):
     def update_percent(self):
         self.gpu.value = commands.get_gpu_utilization()
         return True
+
+
+class LinuxDistro(Box):
+    def __init__(self):
+        super().__init__(
+            name = 'linux-distro',
+        )   
+        self.children = [Label('󰣇', name='linux-distro-logo')]
     
     
 class ProfileWidgets(PopupWindow):
@@ -244,7 +252,7 @@ class ProfileWidgets(PopupWindow):
         )
         
         self.bot_left_box = Box(
-            
+            children = [LinuxDistro()]
         )
         
         self.bot_box = Box(
