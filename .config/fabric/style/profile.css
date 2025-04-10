@@ -88,3 +88,25 @@
     color: var(--foreground);
     border: solid 7px alpha(var(--red), 0.6)
 }
+
+#cpu-logo, #mem-logo, #disk-logo, #gpu-logo {
+    font-size: 15px;
+    font-family: 'NotoSansM Nerd Font Propo';
+    color: var(--foreground)
+}
+
+#cpu-label, #mem-label, #disk-label, #gpu-label {
+    font-size: 10px; color: var(--foreground)
+}
+
+#linux-distro {
+    background-color: var(--background);
+    border: solid 2px var(--foreground);
+    padding: 0px 15px;
+}
+
+#linux-distro-logo {
+    font-size: 48px;
+    font-family: 'NotoSansM Nerd Font Propo';
+    color: var(--blue);
+}
