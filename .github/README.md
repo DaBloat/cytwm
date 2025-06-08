@@ -1,3 +1,4 @@
+# This Project is now belong to [cytwm](https://github.com/cytwm) please check it out there!
 <div align='center'> <img src='CYWM.png'/></div>
 <div align='center'> 
 <p>
@@ -23,5 +24,3 @@ Tiling window manager that focused in aesthethic and productivity in [Hyprland](
 </tr>
 </table>
 </div>
-
-# NOTE: Not yet Finished! Not even in ALPHA TEST!
