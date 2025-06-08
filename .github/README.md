@@ -1,4 +1,4 @@
-# This Project is now belong to [cytwm](https://github.com/cytwm) please check it out there for the updated version!
+# This Project is now belong to [cytwm](https://github.com/cytwm), Please check it out there for the updated version!
 <div align='center'> <img src='CYWM.png'/></div>
 <div align='center'> 
 <p>
